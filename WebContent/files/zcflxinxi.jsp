@@ -457,7 +457,7 @@ function check(){
 				                  
 				              	<%
 				              	System.out.println("------------laile");
-				              		List<Category> list=(List<Category>)request.getAttribute("listCategory");
+				              		List<Category> list=(List<Category>)request.getAttribute("list");
 				              		System.out.println("ds-------"+list.size());
 				              	Iterator<Category> it=list.iterator();
 				              	while(it.hasNext()){
