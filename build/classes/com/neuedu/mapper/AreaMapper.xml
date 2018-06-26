@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.AreaMapper">
+  <resultMap id="BaseResultMap" type="com.neuedu.model.Area">
+    <id column="AREAID" jdbcType="INTEGER" property="areaid" />
+    <result column="AREANAME" jdbcType="VARCHAR" property="areaname" />
+    <result column="RELATIVE" jdbcType="INTEGER" property="relative" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    AREAID, AREANAME, RELATIVE
+  </sql>
+  <select id="selectByExample" parameterType="com.neuedu.model.AreaExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from area
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from area
+    where AREAID = #{areaid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from area
+    where AREAID = #{areaid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.neuedu.model.AreaExample">
+    delete from area
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.neuedu.model.Area">
+    insert into area (AREAID, AREANAME, RELATIVE
+      )
+    values (#{areaid,jdbcType=INTEGER}, #{areaname,jdbcType=VARCHAR}, #{relative,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.neuedu.model.Area">
+    insert into area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="areaid != null">
+        AREAID,
+      </if>
+      <if test="areaname != null">
+        AREANAME,
+      </if>
+      <if test="relative != null">
+        RELATIVE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="areaid != null">
+        #{areaid,jdbcType=INTEGER},
+      </if>
+      <if test="areaname != null">
+        #{areaname,jdbcType=VARCHAR},
+      </if>
+      <if test="relative != null">
+        #{relative,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.neuedu.model.AreaExample" resultType="java.lang.Long">
+    select count(*) from area
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update area
+    <set>
+      <if test="record.areaid != null">
+        AREAID = #{record.areaid,jdbcType=INTEGER},
+      </if>
+      <if test="record.areaname != null">
+        AREANAME = #{record.areaname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.relative != null">
+        RELATIVE = #{record.relative,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update area
+    set AREAID = #{record.areaid,jdbcType=INTEGER},
+      AREANAME = #{record.areaname,jdbcType=VARCHAR},
+      RELATIVE = #{record.relative,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.model.Area">
+    update area
+    <set>
+      <if test="areaname != null">
+        AREANAME = #{areaname,jdbcType=VARCHAR},
+      </if>
+      <if test="relative != null">
+        RELATIVE = #{relative,jdbcType=INTEGER},
+      </if>
+    </set>
+    where AREAID = #{areaid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.neuedu.model.Area">
+    update area
+    set AREANAME = #{areaname,jdbcType=VARCHAR},
+      RELATIVE = #{relative,jdbcType=INTEGER}
+    where AREAID = #{areaid,jdbcType=INTEGER}
+  </update>
+</mapper>
