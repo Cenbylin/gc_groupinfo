@@ -11,11 +11,11 @@ import com.neuedu.service.UserAccountSevice;
 
 @Controller
 public class UserAccountController {
-	// ÔÚmvcµÄ¿ØÖÆ²ãÕûºÏservice·şÎñ²ã,×Ô¶¯×¢Èë
+	// åœ¨mvcçš„æ§åˆ¶å±‚æ•´åˆserviceæœåŠ¡å±‚,è‡ªåŠ¨æ³¨å…¥
 	@Autowired
 	private UserAccountSevice userAccountSevice;
 	
-	//ÔÚä¯ÀÀÖĞÍ¨¹ıURLµ÷ÓÃÕâ¸ö·½·¨½øĞĞµÇÂ¼:doLogin.do
+	//åœ¨æµè§ˆä¸­é€šè¿‡URLè°ƒç”¨è¿™ä¸ªæ–¹æ³•è¿›è¡Œç™»å½•:doLogin.do
 	@RequestMapping("/doLogin")
 	public String doLogin(String account,String password,HttpSession session) {
 		Useraccount useraccount=userAccountSevice.findUserByAccount(account);
@@ -37,14 +37,14 @@ public class UserAccountController {
 	public String doLogout(HttpSession session) {
 		/**
 		 * 
-		 * 1.HttpSession sessionÊÇjsp/servlet¼¼ÊõÖĞµÄ»á»°¶ÔÏó£¬ËüÓÃÓÚÒ»¸öä¯ÀÀÆ÷´°¿Ú¶à´Î·ÃÎÊ·şÎñÆ÷Ê±£¬¿ÉÒÔÔÚ¶à¸öÒ³Ãæ»òservlet¼ä¹²ÏíÊı¾İ
-		 * 2.Ö»Òªµ±Ç°ä¯ÀÀÆ÷´°¿ÚÃ»ÓĞ¹Ø±Õ£¬»ò»á»°Ã»ÓĞ³¬Ê±(Ä¬ÈÏ30·ÖÖÓ³¬Ê±),¾Í¿ÉÒÔÊ¹ÓÃsessionÔÚ·şÎñ¶Ë¹²ÏíÊı¾İ
-		 * 3.ÌØ±ğµÄ£¬ä¯ÀÀÆ÷Ò»µ©¹Ø±Õ£¬ÔÙ´Î´ò¿ªÊ±»á¿ªÆôÒ»¸öĞÂµÄ»á»°¡£Ö®Ç°±£´æÔÚ»á»°ÖĞµÄÊı¾İ¾ÍÎŞ·¨ÔÚÊ¹ÓÃ
+		 * 1.HttpSession sessionæ˜¯jsp/servletæŠ€æœ¯ä¸­çš„ä¼šè¯å¯¹è±¡ï¼Œå®ƒç”¨äºä¸€ä¸ªæµè§ˆå™¨çª—å£å¤šæ¬¡è®¿é—®æœåŠ¡å™¨æ—¶ï¼Œå¯ä»¥åœ¨å¤šä¸ªé¡µé¢æˆ–servleté—´å…±äº«æ•°æ®
+		 * 2.åªè¦å½“å‰æµè§ˆå™¨çª—å£æ²¡æœ‰å…³é—­ï¼Œæˆ–ä¼šè¯æ²¡æœ‰è¶…æ—¶(é»˜è®¤30åˆ†é’Ÿè¶…æ—¶),å°±å¯ä»¥ä½¿ç”¨sessionåœ¨æœåŠ¡ç«¯å…±äº«æ•°æ®
+		 * 3.ç‰¹åˆ«çš„ï¼Œæµè§ˆå™¨ä¸€æ—¦å…³é—­ï¼Œå†æ¬¡æ‰“å¼€æ—¶ä¼šå¼€å¯ä¸€ä¸ªæ–°çš„ä¼šè¯ã€‚ä¹‹å‰ä¿å­˜åœ¨ä¼šè¯ä¸­çš„æ•°æ®å°±æ— æ³•åœ¨ä½¿ç”¨
 		 * 
-		 * 4.»á»°µÄÊ±¼äÊÇ±È½Ï³¤µÄ¡£¶ÔÓ¦ÔÚÒ»´ÎÇëÇóÖĞ¹²ÏíµÄÊı¾İ£¬Ó¦¸ÃÊ¹ÓÃHttpServletRequest¶ÔÏó½øĞĞ±£´æ¹²Ïí
+		 * 4.ä¼šè¯çš„æ—¶é—´æ˜¯æ¯”è¾ƒé•¿çš„ã€‚å¯¹åº”åœ¨ä¸€æ¬¡è¯·æ±‚ä¸­å…±äº«çš„æ•°æ®ï¼Œåº”è¯¥ä½¿ç”¨HttpServletRequestå¯¹è±¡è¿›è¡Œä¿å­˜å…±äº«
 		 * 
 		 */
-		//ÍË³ö£¬ÒªÇå³ıÓÃ»§µÇÂ¼×´Ì¬ÒÔ¼°µÇÂ¼ÓÃµÄĞÅÏ¢
+		//é€€å‡ºï¼Œè¦æ¸…é™¤ç”¨æˆ·ç™»å½•çŠ¶æ€ä»¥åŠç™»å½•ç”¨çš„ä¿¡æ¯
 		session.removeAttribute("login");
 		session.removeAttribute("loginUser");
 		

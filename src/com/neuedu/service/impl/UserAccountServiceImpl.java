@@ -10,7 +10,7 @@ import com.neuedu.service.UserAccountSevice;
 
 @Service
 public class UserAccountServiceImpl implements UserAccountSevice{
-	//×¢½â×¢Èë
+	//æ³¨è§£æ³¨å…¥
 	@Resource
 	private UseraccountMapper mapper;
 	
