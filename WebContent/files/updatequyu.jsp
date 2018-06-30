@@ -375,7 +375,7 @@ function link(){
 
 <%--内容 --%>
         <div class="tpl-content-wrapper">
-            <form name="fom" id="fom" action="../area/list.do" method="post">
+            <form name="fom" id="fom" action="${pageContext.request.contextPath}/area/updateArea.do" method="post">
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				
 				  <tr>
@@ -410,7 +410,7 @@ function link(){
 				                <td height="40" class="font42"><table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="newfont03">
 				
 									                  <tr>
-				                    <td height="20" colspan="14" align="center" bgcolor="#EEEEEE"class="tablestyle_title"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区域详细列表 &nbsp;</td>
+				                    <td height="20" colspan="14" align="center" bgcolor="#EEEEEE"class="tablestyle_title"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更改区域信息&nbsp;</td>
 				                    </tr>
 				                  <tr>
 								    <td width="8%" align="center" bgcolor="#EEEEEE">选择</td>
@@ -425,11 +425,11 @@ function link(){
 				                  <!-- 使用jsp的标签技术显示数据，areaList是在控制器中保存数据的键名，area是一个临时的名称，它可以在循环中获取数据 -->
 				                  <c:forEach items="${areaList}" var="area">
 				                   <tr>
-								      <td bgcolor="#FFFFFF"><input type="checkbox" name="areaid" value="${area.areaid}"/></td>
-				                    <td bgcolor="#FFFFFF">${area.areaid}</td>
-									          <td height="20" bgcolor="#FFFFFF">${area.areaname }</td>
-				                    <td height="20" bgcolor="#FFFFFF">${area.relative==0?"集团":area.areaname}</td>
-									          <td bgcolor="#FFFFFF"><a href="<%=path%>/area/findByIdalter.do?areaid=${area.areaid}">编辑</a>&nbsp;|&nbsp;<a href="<%=path%>/area/findById.do?areaid=${area.areaid}">查看</a></td>
+								      <td bgcolor="#FFFFFF"><input type="checkbox" name="areaid" value="${area.areaId}"/></td>
+				                    <td bgcolor="#FFFFFF">${area.areaId}</td>
+									          <td height="20" bgcolor="#FFFFFF">${area.areaName }</td>
+				                    <td height="20" bgcolor="#FFFFFF">${area.relative==0?"集团":area.parent.areaName}</td>
+									          <td bgcolor="#FFFFFF"><a href="<%=path%>/files/updatequyu.htm">编辑</a>&nbsp;|&nbsp;<a href="<%=path%>/files/quyudetails.html">查看</a></td>
 				                  </tr>
 				                  </c:forEach>
 				                  

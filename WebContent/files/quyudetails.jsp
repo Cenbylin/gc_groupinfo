@@ -400,38 +400,31 @@ function link(){
 				    <td><table id="subtree1" style="DISPLAY: " width="100%" border="0" cellspacing="0" cellpadding="0">
 				        <tr>
 				          <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
-				          	 <tr>
-				               <td height="20"><span class="newfont07">选择：<a href="#" class="right-font08" onclick="selectAll();">全选</a>-<a href="#" class="right-font08" onclick="unselectAll();">反选</a></span>
-						           <input type="button" class="right-button08" onclick="deleteArea();" value="删除所选区域信息" /> <input name="Submit" type="button" class="right-button08" value="添加区域信息" onclick="link();" />
-						           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-					              </td>
-				          </tr>
+				          	 
 				              <tr>
 				                <td height="40" class="font42"><table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="newfont03">
 				
 									                  <tr>
-				                    <td height="20" colspan="14" align="center" bgcolor="#EEEEEE"class="tablestyle_title"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区域详细列表 &nbsp;</td>
+				                    <td height="20" colspan="14" align="center" bgcolor="#EEEEEE"class="tablestyle_title"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区域详细信息 &nbsp;</td>
 				                    </tr>
 				                  <tr>
-								    <td width="8%" align="center" bgcolor="#EEEEEE">选择</td>
+								    
 				            <td width="12%" height="20" align="center" bgcolor="#EEEEEE">区域编号</td>
 									 <td width="12%" height="20" align="center" bgcolor="#EEEEEE">区域名称</td>
 				            <td width="12%" height="20" align="center" bgcolor="#EEEEEE">上级关联</td>
-				                    
-				                    
-				                    <td width="11%" align="center" bgcolor="#EEEEEE">操作</td>
+				                
 				                  </tr>
 				                  
 				                  <!-- 使用jsp的标签技术显示数据，areaList是在控制器中保存数据的键名，area是一个临时的名称，它可以在循环中获取数据 -->
-				                  <c:forEach items="${areaList}" var="area">
+				                  <c:set var="area" value="${area}" />
 				                   <tr>
-								      <td bgcolor="#FFFFFF"><input type="checkbox" name="areaid" value="${area.areaid}"/></td>
-				                    <td bgcolor="#FFFFFF">${area.areaid}</td>
-									          <td height="20" bgcolor="#FFFFFF">${area.areaname }</td>
-				                    <td height="20" bgcolor="#FFFFFF">${area.relative==0?"集团":area.areaname}</td>
-									          <td bgcolor="#FFFFFF"><a href="<%=path%>/area/findByIdalter.do?areaid=${area.areaid}">编辑</a>&nbsp;|&nbsp;<a href="<%=path%>/area/findById.do?areaid=${area.areaid}">查看</a></td>
+								      <td bgcolor="#FFFFFF"><input type="checkbox" name="areaid" value="${area.areaId}"/></td>
+				                    <td bgcolor="#FFFFFF">${area.areaId}</td>
+									          <td height="20" bgcolor="#FFFFFF">${area.areaName }</td>
+				                    <td height="20" bgcolor="#FFFFFF">${area.relative==0?"集团":area.parent.areaName}</td>
+									          
 				                  </tr>
-				                  </c:forEach>
+				                  
 				                  
 				                
 				                </table></td>

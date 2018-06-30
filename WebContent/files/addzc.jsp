@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -334,7 +335,7 @@ document.getElementById("aa").style.display="";
 							<input type="button" name="Submit2" value="返回" class="button" onclick="window.history.go(-1);"/>
 						</td></tr>
 								<TR>
-							<TD width="100%">
+							<td width="100%">
 								<fieldset style="height:100%;">
 								<legend>资产信息</legend>
 									  <table border="0" cellpadding="2" cellspacing="1" style="width:100%">
@@ -342,24 +343,24 @@ document.getElementById("aa").style.display="";
 									  <tr>
 								        <span class="red">*</span></td>
 									    <td nowrap align="right" width="15%">资产名称:</td>
-									    <td width="35%"><input name='zcname' type="text" class="text" style="width:154px" value="" />
+									    <td width="35%"><input name='bname' type="text" class="text" style="width:154px" value="" />
 									  </tr>
 									  <tr>
 									  <td nowrap align="right" width="15%">资产数量:</td>
-									    <td width="35%"><input name='zcnumber' type="text" class="text" style="width:154px" value="" /></td>
+									    <td width="35%"><input name='bcount' type="text" class="text" style="width:154px" value="" /></td>
 									    <td nowrap align="right" width="15%">价格:</td>
 									    <td width="35%"><input name='price' type="text" class="text" style="width:154px" value="" />
 									  </tr>
 									  <tr>
 									  <td nowrap align="right" width="15%">年限:</td>
-									    <td width="35%"><input name='year' type="text" class="text" style="width:154px" value="" /></td>
+									    <td width="35%"><input name='bdate' type="date" class="text" style="width:154px" value="" /></td>
 									    <td nowrap align="right" width="15%">分类编号:</td>
 									    <td width="35%"><input name='cid' type="text" class="text" style="width:154px" value="" />
-									  </tr>
+									  </tr><tr>
 									   <td nowrap align="right" width="15%">部门编号:</td>
 									    <td width="35%"><input name='departid' type="text" class="text" style="width:154px" value="" /></td>
 									 </tr>
-									    
+									    <tr><td><c:out value="${returnmsg} "></c:out></td></tr>
 									    
 									    
 									    

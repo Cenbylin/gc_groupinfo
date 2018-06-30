@@ -1,14 +1,8 @@
-<%@page import="java.util.Iterator"%>
-<%@page import="com.neuedu.model.Category"%>
-<%@page import="java.util.List" isELIgnored="false"%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-
 <%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
@@ -83,81 +77,47 @@ html {
 
 <link href="../css/css.css" rel="stylesheet" type="text/css" />
 <script type="text/JavaScript">
-	
+
 </script>
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <SCRIPT language=JavaScript>
-	function sousuo() {
-		window
-				.open(
-						"gaojisousuo.htm",
-						"",
-						"depended=0,alwaysRaised=1,width=800,height=510,location=0,menubar=0,resizable=0,scrollbars=0,status=0,toolbar=0");
-	}
-	function selectAll() {
-		var obj = document.fom.elements;
-		for (var i = 0; i < obj.length; i++) {
-			if (obj[i].name == "delid") {
-				obj[i].checked = true;
-			}
+function sousuo(){
+	window.open("<%=path%>/files/gaojisousuo.htm","","depended=0,alwaysRaised=1,width=800,height=510,location=0,menubar=0,resizable=0,scrollbars=0,status=0,toolbar=0");
+}
+function selectAll(){
+	var obj = document.fom.elements;
+	for (var i=0;i<obj.length;i++){
+		if (obj[i].name == "areaid"){
+			obj[i].checked = true;
 		}
 	}
+}
 
-	function unselectAll() {
-		var obj = document.fom.elements;
-		for (var i = 0; i < obj.length; i++) {
-			if (obj[i].name == "delid") {
-				if (obj[i].checked == true)
-					obj[i].checked = false;
-				else
-					obj[i].checked = true;
-			}
+function unselectAll(){
+	var obj = document.fom.elements;
+	for (var i=0;i<obj.length;i++){
+		if (obj[i].name == "areaid"){
+			if (obj[i].checked==true) obj[i].checked = false;
+			else obj[i].checked = true;
 		}
 	}
+}
 
-	function link() {
-		document.getElementById("fom").action = "../files/addzcfl.jsp";
-		document.getElementById("fom").submit();
+
+function deleteArea(){
+	
+	if(confirm("确定删除？")){
+	   document.getElementById("fom").action="../area/delete.do";
+	   document.getElementById("fom").submit();
 	}
+}
 
-	/*批量删除*/
-	function del() {
-		var obj = document.fom.elements;
-		var paramUrl = "";
-		for (var i = 0; i < obj.length; i++) {
-			if (obj[i].name == "delid" && obj[i].checked == true) {
-				paramUrl += obj[i].value + ":";
-
-			}
-		}
-		if (paramUrl == "") {
-			alert("请删除要选中的项目");
-			return;
-		}
-		if (paramUrl == "1:") {
-			alert("这个外键删不了 ，别删了，删其他的吧");
-			return;
-		}
-		document.getElementById("fom").action = "${pageContext.request.contextPath}/category/delete.do?cid="
-				+ paramUrl;
-		/* console.log("${pageContext.request.contextPath}/category/delete.action?cid="+paramUrl);
-		document.location.href="${pageContext.request.contextPath}/category/delete.do?cid="+paramUrl; */
-
-	}
-	function check() {
-		var obj = document.fom.elements;
-		var chazhao = "";
-		for (var i = 0; i < obj.length; i++) {
-			if (obj[i].name == "shuru") {
-				chazhao += obj[i].value
-
-			}
-		}
-		
-		var params = encodeURI(encodeURI(chazhao));
-		document.getElementById("fom").action = "${pageContext.request.contextPath}/category/findBymh.do?zha="
-				+ params;
+function link(){
+  //  document.getElementById("fom").action="addquyu.htm";
+   //document.getElementById("fom").submit();
+   location.href="<%=path%>
+	/files/addquyu.htm"
 	}
 </SCRIPT>
 <body data-type="index">
@@ -193,8 +153,7 @@ html {
 					<li class="tpl-dropdown-content-external">
 						<h3>
 							你有 <span class="tpl-color-success">5</span> 条提醒
-						</h3>
-						<a href="###">全部</a>
+						</h3> <a href="###">全部</a>
 					</li>
 					<li class="tpl-dropdown-list-bdbc"><a href="#"
 						class="tpl-dropdown-list-fl"><span
@@ -220,8 +179,7 @@ html {
 					<li class="tpl-dropdown-content-external">
 						<h3>
 							你有 <span class="tpl-color-danger">9</span> 条新消息
-						</h3>
-						<a href="###">全部</a>
+						</h3> <a href="###">全部</a>
 					</li>
 					<li><a href="#" class="tpl-dropdown-content-message"> <span
 							class="tpl-dropdown-content-photo"> <img
@@ -252,8 +210,7 @@ html {
 					<li class="tpl-dropdown-content-external">
 						<h3>
 							你有 <span class="tpl-color-primary">4</span> 个任务进度
-						</h3>
-						<a href="###">全部</a>
+						</h3> <a href="###">全部</a>
 					</li>
 					<li><a href="javascript:;"
 						class="tpl-dropdown-content-progress"> <span class="task">
@@ -331,9 +288,9 @@ html {
 					</a>
 						<ul class="tpl-left-nav-sub-menu" style="display: block">
 							<li><a
-								href="${pageContext.request.contextPath}/category/findAll.do"
-								class="active"> <i class="am-icon-angle-right"></i> <span>资产分类设置</span>
-									<i class="tpl-left-nav-content tpl-badge-success"></i>
+								href="${pageContext.request.contextPath}/category/findAll.do">
+									<i class="am-icon-angle-right"></i> <span>资产分类设置</span> <i
+									class="tpl-left-nav-content tpl-badge-success"></i>
 							</a> <a
 								href="${pageContext.request.contextPath}/department/findAll.do">
 									<i class="am-icon-angle-right"></i> <span>部门设置</span> <i
@@ -341,8 +298,8 @@ html {
 									href="../files/addzc.jsp"> <i class="am-icon-angle-right"></i>
 										<span>资产录入</span> <i
 										class="tpl-left-nav-content tpl-badge-primary"></i> <a
-										href="../area/list.do"> <i class="am-icon-angle-right"></i>
-											<span>区域管理</span>
+										href="../area/list.do" class="active"> <i
+											class="am-icon-angle-right"></i> <span>区域管理</span>
 									</a></li>
 						</ul></li>
 					<li class="tpl-left-nav-item"><a href="javascript:;"
@@ -422,7 +379,9 @@ html {
 
 		<%--内容 --%>
 		<div class="tpl-content-wrapper">
-			<form name="fom" id="fom" method="post">
+			<form name="fom" id="fom"
+				action="${pageContext.request.contextPath}/area/addArea.do"
+				method="post">
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 
 					<tr>
@@ -433,16 +392,7 @@ html {
 
 										<table width="98%" border="0" align="center" cellpadding="0"
 											cellspacing="0">
-											<tr>
-												<td width="24"><img src="../images/ico07.gif"
-													width="20" height="18" /></td>
-												<td width="519"><label>模糊查询找: <input
-														name="shuru" type="text" value="输入要查找的值" />
-												</label> <input name="Submit" type="submit" class="right-button02"
-													value="查 询" onclick="check();" /></td>
-												<td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</td>
-											</tr>
+
 										</table>
 									</td>
 								</tr>
@@ -452,111 +402,50 @@ html {
 					<tr>
 						<td><table id="subtree1" style="DISPLAY:" width="100%"
 								border="0" cellspacing="0" cellpadding="0">
+
 								<tr>
-									<td><table width="95%" border="0" align="center"
-											cellpadding="0" cellspacing="0">
+									<td height="40" class="font42"><table width="100%"
+											border="0" cellpadding="4" cellspacing="1" bgcolor="#464646"
+											class="newfont03">
+
 											<tr>
-												<td height="20"><span class="newfont07">选择：<a
-														href="#" class="right-font08" onclick="selectAll();">全选</a>-<a
-														href="#" class="right-font08" onclick="unselectAll();">反选</a></span>
-													<input name="Submit" type="submit" class="right-button08"
-													value="删除所选资产分类信息" onclick="del();" /> <input
-													name="Submit" type="button" class="right-button08"
-													value="添加资产分类信息" onclick="link();" />
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												</td>
+												<td height="20" colspan="14" align="center"
+													bgcolor="#EEEEEE" class="tablestyle_title">
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;添加区域
+													&nbsp;</td>
 											</tr>
 											<tr>
-												<td height="40" class="font42"><table width="100%"
-														border="0" cellpadding="4" cellspacing="1"
-														bgcolor="#464646" class="newfont03">
+												<td width="12%" height="20" align="center" bgcolor="#EEEEEE">区域名称</td>
+												<td width="12%" height="20" align="center" bgcolor="#EEEEEE">上级关联</td>
 
-														<tr>
-															<td height="20" colspan="14" align="center"
-																bgcolor="#EEEEEE" class="tablestyle_title">
-																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;资产分类详细列表
-																&nbsp;</td>
-														</tr>
-														<tr>
-															<td width="8%" align="center" bgcolor="#EEEEEE">选择</td>
-															<td width="12%" height="20" align="center"
-																bgcolor="#EEEEEE">资产分类编号</td>
-															<td width="12%" height="20" align="center"
-																bgcolor="#EEEEEE">分类名称</td>
-
-
-															<td width="11%" align="center" bgcolor="#EEEEEE">操作</td>
-														</tr>
-
-														<%
-															System.out.println("------------laile");
-															List<Category> list = (List<Category>) request.getAttribute("list");
-															System.out.println("ds-------" + list.size());
-															Iterator<Category> it = list.iterator();
-															while (it.hasNext()) {
-																Category c = it.next();
-														%>
-														<%--  <c:forEach items="${listCategory}" var="c"> --%>
-
-														<tr>
-
-															<td bgcolor="#FFFFFF"><input type="checkbox"
-																name="delid" value="<%=c.getCid()%>" /></td>
-															<td bgcolor="#FFFFFF"><%=c.getCid()%></td>
-															<td height="20" bgcolor="#FFFFFF"><%=c.getCname()%></td>
-															
-															<td bgcolor="#FFFFFF"><a
-																href="${pageContext.request.contextPath}/category/findById.do?cid=<%=c.getCid()%>">编辑</a>&nbsp;|&nbsp;<a
-																href="${pageContext.request.contextPath}/category/findByIdchakan.do?cid=<%=c.getCid()%>">查看</a></td>
-														</tr>
-														<%-- </c:forEach> --%>
-														<%
-															}
-														%>
-
-
-													</table></td>
 											</tr>
-										</table></td>
-								</tr>
-							</table>
 
+											<!-- 使用jsp的标签技术显示数据，areaList是在控制器中保存数据的键名，area是一个临时的名称，它可以在循环中获取数据 -->
 
-							<table width="95%" border="0" align="center" cellpadding="0"
-								cellspacing="0">
-								<tr>
-									<td height="6"><img src="../images/spacer.gif" width="1"
-										height="1" /></td>
-								</tr>
-								<tr>
-									<td height="33"><table width="100%" border="0"
-											align="center" cellpadding="0" cellspacing="0"
-											class="right-font08">
 											<tr>
-												<td width="50%">共 <span class="right-text09">5</span> 页
-													| 第 <span class="right-text09">1</span> 页
-												</td>
-												<td width="49%" align="right">[<a href="#"
-													class="right-font08">首页</a> | <a href="#"
-													class="right-font08">上一页</a> | <a href="#"
-													class="right-font08">下一页</a> | <a href="#"
-													class="right-font08">末页</a>] 转至：
-												</td>
-												<td width="1%"><table width="20" border="0"
-														cellspacing="0" cellpadding="0">
-														<tr>
-															<td width="1%"><input name="textfield3" type="text"
-																class="right-textfield03" size="1" /></td>
-															<td width="87%"><input name="Submit23222"
-																type="submit" class="right-button06" value=" " /></td>
-														</tr>
-													</table></td>
+
+												<td bgcolor="#FFFFFF"><input name='areaname'
+													type="text" class="text" style="width: 200px" value="" /></td>
+												<td height="20" bgcolor="#FFFFFF"><input
+													name='relative' type="text" class="text"
+													style="width: 200px" value="" /></td>
+
 											</tr>
+											<tr>
+												<td><input type="submit" name="Submit" value="保存"
+													class="button" onclick="alert('保存成功！');" /> <input
+													type="button" name="Submit2" value="返回" class="button"
+													onclick="window.history.go(-1);" /></td>
+											</tr>
+
+
 										</table></td>
 								</tr>
 							</table></td>
 					</tr>
 				</table>
+
+
 			</form>
 
 

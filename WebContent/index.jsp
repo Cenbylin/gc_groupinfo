@@ -182,11 +182,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <i class="am-icon-angle-right"></i>
                                     <span>部门设置</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
-                                <a href="../files/addzc.jsp">
+                                <a href="${pageContext.request.contextPath}/files/addzc.jsp">
                                      <i class="am-icon-angle-right"></i>
                                         <span>资产录入</span>
                                      <i class="tpl-left-nav-content tpl-badge-primary"></i>
-                                <a href="../area/list.do">
+                                <a href="${pageContext.request.contextPath}/area/list.do">
                                      <i class="am-icon-angle-right"></i>
                                      <span>区域管理</span>
                                 </a>
