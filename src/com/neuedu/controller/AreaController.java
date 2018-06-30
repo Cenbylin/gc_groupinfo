@@ -30,6 +30,14 @@ public class AreaController {
 		
 	}
 	
+	//用于页面上方查询区域
+	@RequestMapping("findByIdlist")
+	public String findAreaById(HttpServletRequest request,int areaid) {
+		request.setAttribute("area", areaService.findAreaById(areaid));
+		return "quyudetails";
+		
+	}
+	
 	@RequestMapping("findByIdalter")
 	public String findByIdAlter(HttpServletRequest request,int areaid) {
 		request.setAttribute("area", areaService.findAreaById(areaid));
@@ -45,7 +53,7 @@ public class AreaController {
 			request.setAttribute("msg", e.getMessage());
 			return "updatequyu";
 		}
-		
+		request.setAttribute("areaList", areaService.findAllArea());
 		return "quyuxinxi";
 	}
 	
@@ -58,6 +66,20 @@ public class AreaController {
 			request.setAttribute("msg", e.getMessage());
 			return "addquyu";
 		}
+		request.setAttribute("areaList", areaService.findAllArea());
+		return "quyuxinxi";
+	}
+	
+	@RequestMapping("deleteArea")
+	public String deleteAreaByid(HttpServletRequest request ,String areaid) {
+		try {
+			areaService.deleteArea(areaid);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("删除时出错，id类型转换出错");
+		}
+		
+		request.setAttribute("areaList", areaService.findAllArea());
 		return "quyuxinxi";
 	}
 	

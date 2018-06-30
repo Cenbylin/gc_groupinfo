@@ -35,13 +35,13 @@ public class BalanceServiceImpl implements BalanceService{
 		if(balance.getBdate() == null ) {
 			throw new Exception("资产年限不能为空");
 		}
-		try {
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			format.setLenient(false);//防止类似2月29转化为3月1
-			format.parse(balance.getBdate().toString());
-		}catch(ParseException  e) {
-			throw new Exception("年限格式应为如此格式2018-06-28 00:00:00");
-		}
+//		try {
+//			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//			format.setLenient(false);//防止类似2月29转化为3月1
+//			format.parse(balance.getBdate().toString());
+//		}catch(ParseException  e) {
+//			throw new Exception("年限格式应为如此格式2018-06-28 00:00:00");
+//		}
 		if(balance.getDepartid() == null || "".equals(balance.getDepartid())) {
 			throw new Exception("部门编号不能为空");
 		}

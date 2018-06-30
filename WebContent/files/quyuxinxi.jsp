@@ -89,17 +89,34 @@ function unselectAll(){
 
 
 function deleteArea(){
+	var obj = document.fom.elements;
+	var paramUrl = "";
+	for (var i = 0; i < obj.length; i++) {
+		if (obj[i].name == "areaid" && obj[i].checked == true) {
+			paramUrl += obj[i].value + ":";
+
+		}
+	}
+	if (paramUrl == "") {
+		alert("请删除要选中的项目");
+		return;
+	}
+	if (paramUrl == "1:") {
+		alert("这个外键删不了 ，别删了，删其他的吧");
+		return;
+	}
 	
 	if(confirm("确定删除？")){
-	   document.getElementById("fom").action="../area/delete.do";
-	   document.getElementById("fom").submit();
+		document.getElementById("fom").action = "${pageContext.request.contextPath}/area/deleteArea.do?areaid="
+			+ paramUrl;
+	    document.getElementById("fom").submit();
 	}
 }
 
 function link(){
   //  document.getElementById("fom").action="addquyu.htm";
    //document.getElementById("fom").submit();
-   location.href="<%=path%>/files/addquyu.htm"
+   location.href="<%=path%>/area/addArea.do "
 }
 
 </SCRIPT>
@@ -375,7 +392,7 @@ function link(){
 
 <%--内容 --%>
         <div class="tpl-content-wrapper">
-            <form name="fom" id="fom" action="../area/list.do" method="post">
+            <form name="fom" id="fom" action="${pageContext.request.contextPath}/area/findByIdlist.do" method="post">
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				
 				  <tr>
@@ -387,10 +404,10 @@ function link(){
 						    <tr>
 							  <td width="24"><img src="../images/ico07.gif" width="20" height="18" /></td>
 							  <td width="519"><label>区域编号:
-							      <input name="text" type="text" nam="gongs" />
+							      <input name="areaid" type="text"  />
 							  </label>
 							    </input>
-							    <input name="Submit" type="button" class="right-button02" value="查 询" /></td>
+							    <input name="Submit" type="submit" class="right-button02" value="查 询" /></td>
 							   <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>	
 						    </tr>
 				          </table></td>
@@ -428,7 +445,7 @@ function link(){
 								      <td bgcolor="#FFFFFF"><input type="checkbox" name="areaid" value="${area.areaid}"/></td>
 				                    <td bgcolor="#FFFFFF">${area.areaid}</td>
 									          <td height="20" bgcolor="#FFFFFF">${area.areaname }</td>
-				                    <td height="20" bgcolor="#FFFFFF">${area.relative==0?"集团":area.areaname}</td>
+				                    <td height="20" bgcolor="#FFFFFF">${area.relative==0?"集团":area.relative}</td>
 									          <td bgcolor="#FFFFFF"><a href="<%=path%>/area/findByIdalter.do?areaid=${area.areaid}">编辑</a>&nbsp;|&nbsp;<a href="<%=path%>/area/findById.do?areaid=${area.areaid}">查看</a></td>
 				                  </tr>
 				                  </c:forEach>

@@ -431,6 +431,7 @@ function link(){
 													style="width: 200px" value="" /></td>
 
 											</tr>
+											<tr><td><c:out value="${msg} " /></td></tr>
 											<tr>
 												<td><input type="submit" name="Submit" value="保存"
 													class="button" onclick="alert('保存成功！');" /> <input

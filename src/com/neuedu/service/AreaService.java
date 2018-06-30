@@ -1,13 +1,15 @@
 package com.neuedu.service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import com.neuedu.model.Area;
 
 public interface AreaService {
-	List<Area>findAllArea();
-	Area findAreaById(int areaid);
-	void updateArea(Area area) throws Exception;
-	void addArea(Area area) throws Exception;
+	public List<Area>findAllArea();
+	public Area findAreaById(int areaid);
+	public void updateArea(Area area) throws Exception;
+	public void addArea(Area area) throws Exception;
+	public void deleteArea(String areaid) throws UnsupportedEncodingException;
 
 }
