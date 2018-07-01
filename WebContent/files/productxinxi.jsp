@@ -434,7 +434,7 @@ function link(){
 								            <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
 				                    <td bgcolor="#FFFFFF"><%=v.getProdid() %></td>
 									          <td height="20" bgcolor="#FFFFFF"><%=v.getProdname() %></td>
-				                    <td bgcolor="#FFFFFF"><%=v.getBuycount() %></td>
+				                    <td bgcolor="#FFFFFF"><%=v.getbuycount() %></td>
 				                     <td bgcolor="#FFFFFF"><%=v.getProdcount() %></td>
 				                    <td height="20" bgcolor="#FFFFFF"><%=v.getProvid() %></td>
 				                    

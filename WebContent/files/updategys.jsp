@@ -3,7 +3,7 @@
 <%@page import="java.util.List" isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="b"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -363,7 +363,7 @@ document.getElementById("aa").style.display="";
 									    <td nowrap align="right" width="15%">联系地址:</td>
 									    <td width="35%"><input name="address" type="text" class="text" style="width:154px" value="<%=b.getAddress() %>" />
 									  </tr>
-									   
+									   <tr><td><c:out value="${msg }" /></td></tr>
 									  </table>
 							  <br />
 								</fieldset>

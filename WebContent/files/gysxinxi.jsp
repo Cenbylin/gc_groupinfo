@@ -3,7 +3,7 @@
 <%@page import="java.util.List" isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="b"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -94,6 +94,44 @@ function unselectAll(){
 function link(){
     document.getElementById("fom").action="../files/addgys.jsp";
    document.getElementById("fom").submit();
+}
+
+function del() {
+	var obj = document.fom.elements;
+	var paramUrl = "";
+	for (var i = 0; i < obj.length; i++) {
+		if (obj[i].name == "delid" && obj[i].checked == true) {
+			paramUrl += obj[i].value + ":";
+
+		}
+	}
+	if (paramUrl == "") {
+		alert("请删除要选中的项目");
+		return;
+	}
+	if (paramUrl == "1:") {
+		alert("这个外键删不了 ，别删了，删其他的吧");
+		return;
+	}
+	document.getElementById("fom").action = "${pageContext.request.contextPath}/provider/delete.do?id="
+			+ paramUrl;
+	/* console.log("${pageContext.request.contextPath}/category/delete.action?cid="+paramUrl);
+	document.location.href="${pageContext.request.contextPath}/category/delete.do?cid="+paramUrl; */
+
+}
+function check() {
+	var obj = document.fom.elements;
+	var chazhao = "";
+	for (var i = 0; i < obj.length; i++) {
+		if (obj[i].name == "shuru") {
+			chazhao += obj[i].value
+
+		}
+	}
+	
+	var params = encodeURI(encodeURI(chazhao));
+	document.getElementById("fom").action = "${pageContext.request.contextPath}/provider/findBymh.do?zha="
+			+ params;
 }
 
 </SCRIPT>
@@ -381,10 +419,10 @@ function link(){
 						    <tr>
 							  <td width="24"><img src="../images/ico07.gif" width="20" height="18" /></td>
 							  <td width="519"><label>供应商编号:
-							      <input name="text" type="text" nam="gongs" />
+							      <input name="shuru" type="text" value="${msg }" />
 							  </label>
 							    </input>
-							    <input name="Submit" type="button" class="right-button02" value="查 询" /></td>
+							    <input name="Submit" type="submit" class="right-button02" value="查 询" onclick="check();"/></td>
 							   <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>	
 						    </tr>
 				          </table></td>
@@ -396,7 +434,7 @@ function link(){
 				          <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 				          	 <tr>
 				               <td height="20"><span class="newfont07">选择：<a href="#" class="right-font08" onclick="selectAll();">全选</a>-<a href="#" class="right-font08" onclick="unselectAll();">反选</a></span>
-						           <input name="Submit" type="button" class="right-button08" value="删除所选供应商信息" /> <input name="Submit" type="button" class="right-button08" value="添加供应商信息" onclick="link();" />
+						           <input name="Submit" type="submit" class="right-button08" value="删除所选供应商信息" onclick="del();"/> <input name="Submit" type="button" class="right-button08" value="添加供应商信息" onclick="link();" />
 						           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 					              </td>
 				          </tr>
@@ -428,7 +466,7 @@ function link(){
 				
 				
 				                  <tr>
-				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
+				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid" value="<%=b.getProvid()%>" /></td>
 				                     <td bgcolor="#FFFFFF"><%=b.getProvid() %></td>
 				                    <td height="20" bgcolor="#FFFFFF"><%=b.getProvname() %></td>
 				                    <td bgcolor="#FFFFFF"><%=b.getPhone() %></td>

@@ -41,6 +41,13 @@ public class BalanceController {
 		
 	}
 	
+	@RequestMapping("findAll")
+	public String findAllBalance(HttpServletRequest request) {
+		request.setAttribute("listBalance", balanceService.findAllBalance());
+		return "totalzc";
+		
+	}
+	
 	
 	
 

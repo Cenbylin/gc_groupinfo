@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -329,7 +329,7 @@ document.getElementById("aa").style.display="";
 						
 						<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 						<tr><td align="left">
-						<input type="button" name="Submit" value="保存" class="button" onclick="alert('保存成功！');"/>　
+						<input type="submit" name="Submit" value="保存" class="button" onclick="alert('保存成功！');"/>　
 							
 							<input type="button" name="Submit2" value="返回" class="button" onclick="window.history.go(-1);"/>
 						</td></tr>
@@ -359,7 +359,7 @@ document.getElementById("aa").style.display="";
 									    <td align="right">联系地址:</td>
 									    <td><input class="text" name='address' style="width:154px" value=""/></td>
 									  </tr>
-									 
+									 <tr><td><c:out  value="${msg }" /></td></tr>
 									  
 									  </table>
 							  <br />
