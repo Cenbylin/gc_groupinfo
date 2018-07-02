@@ -101,7 +101,7 @@ $(function(){
 	$("#chaxun").click(function() {
 		var bq= $("#text").val();
         //alert("搜索的值为："+bq);
-        $("#fom").attr("action","${pageContext.request.contextPath}/Balance/findById.do?bid="+bq);
+        $("#fom").attr("action","${pageContext.request.contextPath}/Balance/findBYzcflbh.do?zha="+bq);
         $("#fom").submit();
     });
 });
@@ -110,7 +110,7 @@ $(function(){
 	$("#chaxun2").click(function() {
 		var bq= $("#text2").val();
         //alert("搜索的值为："+bq);
-        $("#fom").attr("action","${pageContext.request.contextPath}/Balance/findById2.do?departid="+bq);
+        $("#fom").attr("action","${pageContext.request.contextPath}/Balance/findBYbmbh.do?zha="+bq);
         $("#fom").submit();
     });
 });

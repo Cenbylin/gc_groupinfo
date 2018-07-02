@@ -90,6 +90,15 @@
     from buy
     where BUYID = #{buyid,jdbcType=INTEGER}
   </select>
+  <!-- 自己加的 -->
+  <select id="selectAll" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select b.BUYID, b.BUYCOUNT, b.BUYTIME, b.PROVID, b.DEPARTID, p.PRODID from buy as b, product as p where b.PROVID = p.PROVID
+  </select>
+  
+  <select id="findBycgdh" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select b.BUYID, b.BUYCOUNT, b.BUYTIME, b.PROVID, b.DEPARTID, p.PRODID from buy as b, product as p where b.PROVID = p.PROVID and b.BUYID=#{buyid,jdbcType=INTEGER}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from buy
     where BUYID = #{buyid,jdbcType=INTEGER}

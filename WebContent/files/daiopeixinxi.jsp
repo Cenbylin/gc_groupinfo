@@ -418,7 +418,7 @@ function link(){
 				            <td width="11%" align="center" bgcolor="#EEEEEE">操作</td>
 				           </tr>
 				           
-				           <c:forEach items="${listBuy2}" var="c">
+				           <c:forEach items="${list}" var="c">
 				           
 				           <tr>
 				

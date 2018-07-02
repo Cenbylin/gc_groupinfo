@@ -40,6 +40,18 @@ public class BuyController {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));// CustomDateEditor为自定义日期编辑器
 	}
+	//看采购记录
+	@RequestMapping("findAll2")
+	public String findAll(HttpServletRequest request) {
+		request.setAttribute("listCgjl", buyService.selectAll());
+		return "caigoujilu";
+	}
+	//采购记录的顶部栏查询
+	@RequestMapping("findBycgdh")
+	public String findBycgdh(HttpServletRequest request, String zha) {
+		request.setAttribute("listCgjl", buyService.findBycgdh(Integer.parseInt(zha)));
+		return "caigoujilu";
+	}
 	
 	@RequestMapping("findAll")
 	public String findAllBuy(HttpServletRequest request) {

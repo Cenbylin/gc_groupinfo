@@ -109,7 +109,7 @@ $(function(){
 	$("#chaxun").click(function() {
 		var bq= $("#text").val();
         //alert("搜索的值为："+bq);
-        $("#fom").attr("action","${pageContext.request.contextPath}/tpjl/fingById.do?pepartid="+bq);
+        $("#fom").attr("action","${pageContext.request.contextPath}/translate/findBytpbh.do?zha="+bq);
         $("#fom").submit();
     });
 });

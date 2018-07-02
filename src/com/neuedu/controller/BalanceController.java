@@ -18,7 +18,7 @@ import com.neuedu.model.Balance;
 import com.neuedu.service.BalanceService;
 
 @Controller
-@RequestMapping("zc")
+@RequestMapping("Balance")
 public class BalanceController {
 	@Autowired
 	BalanceService balanceService;

@@ -6,6 +6,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TranslateMapper {
+	List<Translate> selectAll();
+	List<Translate> findBytpbh( int tid );
+	
     long countByExample(TranslateExample example);
 
     int deleteByExample(TranslateExample example);

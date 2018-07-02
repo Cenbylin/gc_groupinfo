@@ -94,4 +94,17 @@ public class BuyServiceImpl implements BuyService{
 		}
 	}
 
+	@Override
+	public List<Buy> selectAll() {
+		// TODO Auto-generated method stub
+		return mapper.selectAll();
+	}
+
+	@Override
+	public List<Buy> findBycgdh(int buyid) {
+		// TODO Auto-generated method stub
+		return mapper.findBycgdh(buyid);
+		
+	}
+
 }

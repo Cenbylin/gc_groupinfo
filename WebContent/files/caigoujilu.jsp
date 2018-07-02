@@ -101,7 +101,7 @@ $(function(){
 	$("#chaxun").click(function() {
 		var bq= $("#text").val();
         //alert("搜索的值为："+bq);
-        $("#fom").attr("action","${pageContext.request.contextPath}/cgjl/findById.do?buyid="+bq);
+        $("#fom").attr("action","${pageContext.request.contextPath}/buy/findBycgdh.do?zha="+bq);
         $("#fom").submit();
     });
 });

@@ -6,6 +6,10 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface BuyMapper {
+	List<Buy> selectAll();
+    
+    List<Buy> findBycgdh( int buyid );
+	
     long countByExample(BuyExample example);
 
     int deleteByExample(BuyExample example);
