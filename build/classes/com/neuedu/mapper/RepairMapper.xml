@@ -83,6 +83,18 @@
       order by ${orderByClause}
     </if>
   </select>
+  <!-- 自己加的 -->
+  <select id="selectAll" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from repair
+  </select>
+  
+  <select id="findBybxbh" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from repair
+    where REPAIRID = #{repairid,jdbcType=INTEGER}
+  </select>
+  
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

@@ -214,7 +214,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                      <i class="am-icon-angle-right"></i>
                                         <span>跨部门调配管理</span>
                                      <i class="tpl-left-nav-content tpl-badge-primary"></i>
-                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll3.do">
+                                <a href="${pageContext.request.contextPath}/Repair/findAll2.do">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报修管理</span>
                                 </a>
@@ -247,11 +247,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                      <i class="am-icon-angle-right"></i>
                                         <span>跨部门调配记录</span>
                                      <i class="tpl-left-nav-content tpl-badge-primary"></i>
-                                <a href="${pageContext.request.contextPath}/bxjl/findAll.do">
+                                <a href="${pageContext.request.contextPath}/Repair/findAll.do">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报修记录</span>
                                 </a>
-								<a href="${pageContext.request.contextPath}/bfjl/findAll.do">
+								<a href="${pageContext.request.contextPath}/scrap/findAll.do">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报废记录</span>
                                 </a>

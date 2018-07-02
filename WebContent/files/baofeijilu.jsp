@@ -103,7 +103,7 @@ $(function(){
 	$("#chaxun").click(function() {
 		var bq= $("#text").val();
         //alert("搜索的值为："+bq);
-        $("#fom").attr("action","${pageContext.request.contextPath}/bfjl/findById.do?sid="+bq);
+        $("#fom").attr("action","${pageContext.request.contextPath}/scrap/findBybfdh.do?zha="+bq);
         $("#fom").submit();
     });
 });

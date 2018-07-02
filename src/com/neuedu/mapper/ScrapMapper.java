@@ -6,6 +6,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface ScrapMapper {
+	List<Scrap> selectAll();
+	List<Scrap> findBybfdh(Integer sid);
+	
     long countByExample(ScrapExample example);
 
     int deleteByExample(ScrapExample example);

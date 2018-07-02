@@ -1,5 +1,8 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java"  pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@page import="com.neuedu.model.Repair"%>
+<%@page import="java.util.List" isELIgnored="false"%>
+<%@page import="java.util.Iterator"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -416,16 +419,17 @@ function link(){
 				            <td width="11%" align="center" bgcolor="#EEEEEE">操作</td>
 				           </tr>
 				           
+				           
 				           <c:forEach items="${listBuy3}" var="c">
 				           
 				           <tr>
 				
 				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
-				                    <td bgcolor="#FFFFFF">${c.rEPAIRID }</td>
-				                    <td bgcolor="#FFFFFF">${c.rCOUNT }</td>
-				                    <td bgcolor="#FFFFFF">${c.rTIME }</td>
-				                    <td bgcolor="#FFFFFF">${c.dEPARTID }</td>
-				                    <td bgcolor="#FFFFFF">${c.bID }</td>
+				                    <td bgcolor="#FFFFFF">${c.repairid }</td>
+				                    <td bgcolor="#FFFFFF">${c.rcount }</td>
+				                    <td bgcolor="#FFFFFF">${c.rtime }</td>
+				                    <td bgcolor="#FFFFFF">${c.departid }</td>
+				                    <td bgcolor="#FFFFFF">${c.bid }</td>
 				                    <td bgcolor="#FFFFFF"><a href="updatebaoxiu.html">编辑</a>&nbsp;|&nbsp;<a href="baoxiudetails.html">查看</a></td>
 				           </tr> 
 				           
