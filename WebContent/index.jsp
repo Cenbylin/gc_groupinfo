@@ -206,7 +206,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <span>采购管理</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll.do">
+                                <a href="${pageContext.request.contextPath}/check/findAll.do">
                                     <i class="am-icon-angle-right"></i>
                                     <span>盘点管理</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>

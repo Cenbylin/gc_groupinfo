@@ -68,7 +68,7 @@ public class TranslateServiceImpl implements TranslateService{
 	public void deleteTranslate(String id) throws Exception{
 		// TODO Auto-generated method stub
 		try {
-			String[] id2 = id.split(id);
+			String[] id2 = id.split(":");
 			for (String string : id2) {
 				if(string == null || "".equals(string)) {
 				}else {

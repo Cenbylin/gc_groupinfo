@@ -459,7 +459,7 @@ function query() {
 				           
 				           <tr>
 				
-				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
+				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid" value="${c.tid }"/></td>
 				                    <td bgcolor="#FFFFFF">${c.tid }</td>
 				                    <td bgcolor="#FFFFFF">${c.tcount }</td>
 				                    <td bgcolor="#FFFFFF">${c.trtime }</td>

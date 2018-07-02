@@ -393,7 +393,7 @@ $(function(){
 				        </tr>
 				    </table></td></tr>
 				  <tr>
-				    <td><table id="subtree1" style="DISPLAY: " width="100%" border="0" cellspacing="0" cellpadding="0">
+				    <td><table id="subtree1"  width="100%" border="0" cellspacing="0" cellpadding="0">
 				        <tr>
 				          <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 				          	 <tr>
@@ -421,16 +421,16 @@ $(function(){
 				           <c:forEach items="${listBuy1}" var="c">
 				           <tr>
 								
-				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid" value="${c.bUYID}"/></td>
-				                    <td bgcolor="#FFFFFF">${c.bUYID}</td>
-				                    <td bgcolor="#FFFFFF">${c.bUYCOUNT}</td>
-				                    <td bgcolor="#FFFFFF">${c.bUYTIME}</td>
-				                    <td bgcolor="#FFFFFF">${c.pROVID}</td>
-				                    <td bgcolor="#FFFFFF">${c.dEPARTID}</td>
-				                    <td bgcolor="#FFFFFF">${c.pRODID}</td>
+				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid" value="${c.buyid}"/></td>
+				                    <td bgcolor="#FFFFFF">${c.buyid}</td>
+				                    <td bgcolor="#FFFFFF">${c.buycount}</td>
+				                    <td bgcolor="#FFFFFF">${c.buytime}</td>
+				                    <td bgcolor="#FFFFFF">${c.provid}</td>
+				                    <td bgcolor="#FFFFFF">${c.departid}</td>
+				                    <td bgcolor="#FFFFFF">${c.prodid}</td>
 				
 				        
-				                    <td bgcolor="#FFFFFF"><a href="${pageContext.request.contextPath}/buy/findById.do?id=${c.bUYID}">编辑</a>&nbsp;|&nbsp;<a href="${pageContext.request.contextPath}/buy/findById2.do?id=${c.bUYID}">查看</a></td>
+				                    <td bgcolor="#FFFFFF"><a href="${pageContext.request.contextPath}/buy/findById.do?id=${c.buyid}">编辑</a>&nbsp;|&nbsp;<a href="${pageContext.request.contextPath}/buy/findById2.do?id=${c.buyid}">查看</a></td>
 				           	
 				           </tr> 
 				           
@@ -486,7 +486,7 @@ $(function(){
 				        </tr>
 				    </table></td></tr>
 				  <tr>
-				    <td><table id="subtree1" style="DISPLAY: " width="100%" border="0" cellspacing="0" cellpadding="0">
+				    <td><table id="subtree1"  width="100%" border="0" cellspacing="0" cellpadding="0">
 				        <tr>
 				          <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 				             <tr>
@@ -516,12 +516,12 @@ $(function(){
 				           
 				           <tr>
 				
-				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
-				                    <td bgcolor="#FFFFFF">${c.tID}</td>
-				                    <td bgcolor="#FFFFFF">${c.tCOUNT}</td>
-				                    <td bgcolor="#FFFFFF">${c.tRTIME}</td>
-				                    <td bgcolor="#FFFFFF">${c.aREAID}</td>
-				                    <td bgcolor="#FFFFFF">${c.dEPARTID}</td>
+				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid" value="${c.tid}"/></td>
+				                    <td bgcolor="#FFFFFF">${c.tid}</td>
+				                    <td bgcolor="#FFFFFF">${c.tcount}</td>
+				                    <td bgcolor="#FFFFFF">${c.trtime}</td>
+				                    <td bgcolor="#FFFFFF">${c.bid}</td>
+				                    <td bgcolor="#FFFFFF">${c.departid}</td>
 				                    <td bgcolor="#FFFFFF"><a href="updatecaigou.htm">编辑</a>&nbsp;|&nbsp;<a href="caigoudetails.html">查看</a></td>
 				           </tr> 
 				           
@@ -603,11 +603,11 @@ $(function(){
 				           
 				           <tr>
 				
-				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
-				                    <td bgcolor="#FFFFFF">${c.rEPAIRID}</td>
-				                    <td bgcolor="#FFFFFF">${c.rCOUNT}</td>
-				                    <td bgcolor="#FFFFFF">${c.rTIME}</td>
-				                    <td bgcolor="#FFFFFF">${c.dEPARTID}</td>
+				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid" value="${c.repairid}" /></td>
+				                    <td bgcolor="#FFFFFF">${c.repairid}</td>
+				                    <td bgcolor="#FFFFFF">${c.rcount}</td>
+				                    <td bgcolor="#FFFFFF">${c.rtime}</td>
+				                    <td bgcolor="#FFFFFF">${c.departid}</td>
 				                    <td bgcolor="#FFFFFF"><a href="updatecaigou.htm">编辑</a>&nbsp;|&nbsp;<a href="caigoudetails.html">查看</a></td>
 				           </tr> 
 				           </c:forEach>
@@ -689,10 +689,10 @@ $(function(){
 				           <tr>
 				
 				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
-				                    <td bgcolor="#FFFFFF">${c.sID}</td>
-				                    <td bgcolor="#FFFFFF">${c.sCOUNT}</td>
-				                    <td bgcolor="#FFFFFF">${c.sTIME}</td>
-				                    <td bgcolor="#FFFFFF">${c.bID}</td>
+				                    <td bgcolor="#FFFFFF">${c.sid}</td>
+				                    <td bgcolor="#FFFFFF">${c.scount}</td>
+				                    <td bgcolor="#FFFFFF">${c.stime}</td>
+				                    <td bgcolor="#FFFFFF">${c.bid}</td>
 				                    <td bgcolor="#FFFFFF"><a href="updatecaigou.htm">编辑</a>&nbsp;|&nbsp;<a href="caigoudetails.html">查看</a></td>
 				           </tr> 
 				           
