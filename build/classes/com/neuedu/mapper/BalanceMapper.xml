@@ -9,6 +9,7 @@
     <result column="BDATE" jdbcType="TIMESTAMP" property="bdate" />
     <result column="CID" jdbcType="INTEGER" property="cid" />
     <result column="DEPARTID" jdbcType="INTEGER" property="departid" />
+    <result column="CNAME" jdbcType="VARCHAR" property="cname" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    BID, BNAME, BCOUNT, PRICE, BDATE, CID, DEPARTID
+    BID, BNAME, BCOUNT, PRICE, BDATE, CID, DEPARTID, CNAME
   </sql>
   <select id="selectByExample" parameterType="com.neuedu.model.BalanceExample" resultMap="BaseResultMap">
     select
@@ -104,10 +105,10 @@
   <insert id="insert" parameterType="com.neuedu.model.Balance">
     insert into balance (BID, BNAME, BCOUNT, 
       PRICE, BDATE, CID, 
-      DEPARTID)
+      DEPARTID, CNAME)
     values (#{bid,jdbcType=INTEGER}, #{bname,jdbcType=VARCHAR}, #{bcount,jdbcType=DOUBLE}, 
       #{price,jdbcType=DECIMAL}, #{bdate,jdbcType=TIMESTAMP}, #{cid,jdbcType=INTEGER}, 
-      #{departid,jdbcType=INTEGER})
+      #{departid,jdbcType=INTEGER}, #{cname,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.neuedu.model.Balance">
     insert into balance
@@ -133,6 +134,9 @@
       <if test="departid != null">
         DEPARTID,
       </if>
+      <if test="cname != null">
+        CNAME,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="bid != null">
@@ -155,6 +159,9 @@
       </if>
       <if test="departid != null">
         #{departid,jdbcType=INTEGER},
+      </if>
+      <if test="cname != null">
+        #{cname,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -188,6 +195,9 @@
       <if test="record.departid != null">
         DEPARTID = #{record.departid,jdbcType=INTEGER},
       </if>
+      <if test="record.cname != null">
+        CNAME = #{record.cname,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -201,7 +211,8 @@
       PRICE = #{record.price,jdbcType=DECIMAL},
       BDATE = #{record.bdate,jdbcType=TIMESTAMP},
       CID = #{record.cid,jdbcType=INTEGER},
-      DEPARTID = #{record.departid,jdbcType=INTEGER}
+      DEPARTID = #{record.departid,jdbcType=INTEGER},
+      CNAME = #{record.cname,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,6 +238,9 @@
       <if test="departid != null">
         DEPARTID = #{departid,jdbcType=INTEGER},
       </if>
+      <if test="cname != null">
+        CNAME = #{cname,jdbcType=VARCHAR},
+      </if>
     </set>
     where BID = #{bid,jdbcType=INTEGER}
   </update>
@@ -237,7 +251,8 @@
       PRICE = #{price,jdbcType=DECIMAL},
       BDATE = #{bdate,jdbcType=TIMESTAMP},
       CID = #{cid,jdbcType=INTEGER},
-      DEPARTID = #{departid,jdbcType=INTEGER}
+      DEPARTID = #{departid,jdbcType=INTEGER},
+      CNAME = #{cname,jdbcType=VARCHAR}
     where BID = #{bid,jdbcType=INTEGER}
   </update>
 </mapper>

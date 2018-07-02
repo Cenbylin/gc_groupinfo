@@ -18,6 +18,8 @@ public class Balance {
 
     private Integer departid;
 
+    private String cname;
+
     public Integer getBid() {
         return bid;
     }
@@ -72,5 +74,13 @@ public class Balance {
 
     public void setDepartid(Integer departid) {
         this.departid = departid;
+    }
+
+    public String getCname() {
+        return cname;
+    }
+
+    public void setCname(String cname) {
+        this.cname = cname == null ? null : cname.trim();
     }
 }

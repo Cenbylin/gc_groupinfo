@@ -1,5 +1,5 @@
 <%@page import="java.util.Iterator"%>
-<%@page import="com.neuedu.model.Bfjl"%>
+<%@page import="com.neuedu.model.Scrap"%>
 <%@page import="java.util.List" isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
@@ -424,11 +424,11 @@ $(function(){
 				           </tr>
 				           
 				              <%
-				              	List<Bfjl> list=(List<Bfjl>)request.getAttribute("listBfjl");
-				              	Iterator<Bfjl> it=list.iterator();
+				              	List<Scrap> list=(List<Scrap>)request.getAttribute("listBfjl");
+				              	Iterator<Scrap> it=list.iterator();
 				              	while(it.hasNext()){
 				              		
-				              		Bfjl b=it.next();
+				              		Scrap b=it.next();
 				              	%>
 				           <tr>
 				                   

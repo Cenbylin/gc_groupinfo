@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import com.neuedu.mapper.UseraccountMapper;
 import com.neuedu.model.Useraccount;
+import com.neuedu.model.UseraccountExample;
+import com.neuedu.model.UseraccountExample.Criteria;
 import com.neuedu.service.UserAccountSevice;
 
 @Service
@@ -16,7 +18,10 @@ public class UserAccountServiceImpl implements UserAccountSevice{
 	
 	@Override
 	public Useraccount findUserByAccount(String account) {
-		return mapper.findUserByAccount(account);
+		UseraccountExample example = new UseraccountExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andAccountsEqualTo(account);
+		return mapper.selectByExample(example).get(0);
 	}
 
 }

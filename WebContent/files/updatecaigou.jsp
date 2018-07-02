@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.javassist.tools.framedump"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.neuedu.model.*"%>
@@ -400,29 +401,29 @@ document.getElementById("aa").style.display="";
 									 
 									  <tr>
 									  <td nowrap align="right" width="15%">采购单号:</td>
-									    <td width="35%"><input name='BUYID' type="text" class="text" style="width:154px" value="<%=ag.getBUYID() %>"  readonly="readonly" />
+									    <td width="35%"><%=ag.getBuyid() %><input name='buyid' type="hidden" class="text" style="width:154px" value="<%=ag.getBuyid() %>"  readonly="readonly" />
 								        <span class="red">*</span></td>
 									    <td nowrap align="right" width="15%">采购数量:</td>
-									    <td width="35%"><input name='BUYCOUNT' type="text" class="text" style="width:154px" value="<%=ag.getBUYCOUNT() %>" />
+									    <td width="35%"><input name='buycount' type="text" class="text" style="width:154px" value="<%=ag.getBuycount() %>" />
 									  </tr>
 									   <tr>
 									  <td nowrap align="right" width="15%">采购时间:</td>
-									    <td width="35%"><input name='BUYTIME' type="text" class="text" style="width:154px" value="<%=ag.getBUYTIME() %>" />
+									    <td width="35%"><input name='buytime' type="date" class="text" style="width:154px" value="<%=ag.getBuytime() %>" />
 								      
 									    <td nowrap align="right" width="15%">供应商编号:</td>
 									    <td width="35%">
 									    
-									    <select name="PROVID" style="width:154px">
+									    <select name="provid" style="width:154px">
 									    		<%
-										    		List<Product> list=(List<Product>)request.getAttribute("Buy2");
-									              	Iterator<Product> it=list.iterator();
-									              	System.out.println(ag.getPROVID());
+										    		List<Provider> list=(List<Provider>)request.getAttribute("Buy2");
+									              	Iterator<Provider> it=list.iterator();
+									              	System.out.println(ag.getProvid());
 									              	while(it.hasNext()){
 									              	
-									              		Product c=it.next();
+									              		Provider c=it.next();
 									    		%>
 									    		<%
-									    			if(c.getProvid()==ag.getPROVID())
+									    			if(c.getProvid()==ag.getProvid())
 									    			{
 									    		%>
 											   	<option value ="<%=c.getProvid()%>" selected><%=c.getProvid()%></option>
@@ -434,28 +435,52 @@ document.getElementById("aa").style.display="";
 									   <tr>
 									  <td nowrap align="right" width="15%">产品编号:</td>
 									    <td width="35%">
-								       		<select name="DEPARTID" style="width:154px">
+								       		<select name="prodid" style="width:154px">
 									    		<%
-										    		List<Department> list1=(List<Department>)request.getAttribute("Buy3");
-									              	Iterator<Department> it1=list1.iterator();
+										    		List<Product> list1=(List<Product>)request.getAttribute("Buy3");
+									              	Iterator<Product> it1=list1.iterator();
 									              	while(it1.hasNext()){
 									              	
-									              		Department d=it1.next();
+									              		Product d=it1.next();
 									    		%>
 									    		<%
-									    			if(d.getDepartid()==ag.getDEPARTID())
+									    			if(d.getProdid()==ag.getProdid())
 									    			{
 									    		%>
-											   	<option value ="<%=d.getDepartid()%>" selected><%=d.getDepartid()%></option>
+											   	<option value ="<%=d.getProdid()%>" selected><%=d.getProdid()%></option>
 											   	<%}else{ %>
-											   	<option value ="<%=d.getDepartid()%>"><%=d.getDepartid()%></option>
+											   	<option value ="<%=d.getProdid()%>"><%=d.getProdid()%></option>
 											  <%} }%>
 											</select>
 									    
 									    	
 									    	
 									  </tr>
-									
+									  <tr>
+									  <td nowrap align="right" width="15%">部门编号:</td>
+									    <td width="35%">
+								       		<select name="departid" style="width:154px">
+									    		<%
+										    		List<Department> list2=(List<Department>)request.getAttribute("Buy4");
+									              	Iterator<Department> it2=list2.iterator();
+									              	while(it2.hasNext()){
+									              	
+									              		Department f=it2.next();
+									    		%>
+									    		<%
+									    			if(f.getDepartid()==ag.getDepartid())
+									    			{
+									    		%>
+											   	<option value ="<%=f.getDepartid()%>" selected><%=f.getDepartid()%></option>
+											   	<%}else{  %>
+											   	<option value ="<%=f.getDepartid()%>"><%=f.getDepartid()%></option>
+											  <%} }%>
+											</select>
+									    
+									    	
+									    	
+									  </tr>
+									<tr><td><c:out value="${msg }" /></td></tr>
 									  </table>
 							  <br />
 								</fieldset>			</TD>

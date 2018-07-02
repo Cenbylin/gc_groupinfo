@@ -7,10 +7,12 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.neuedu.mapper.BalanceMapper;
 import com.neuedu.model.Balance;
+import com.neuedu.model.Department;
 import com.neuedu.service.BalanceService;
 import com.neuedu.service.CategoryService;
 import com.neuedu.service.DepartmentService;
@@ -20,7 +22,9 @@ public class BalanceServiceImpl implements BalanceService{
 	
 	@Resource
 	BalanceMapper mapper;
+	@Autowired
 	DepartmentService departmentService;
+	@Autowired
 	CategoryService CategoryService;
 
 	@Override
@@ -42,13 +46,13 @@ public class BalanceServiceImpl implements BalanceService{
 //		}catch(ParseException  e) {
 //			throw new Exception("年限格式应为如此格式2018-06-28 00:00:00");
 //		}
-		if(balance.getDepartid() == null || "".equals(balance.getDepartid())) {
+		if(balance.getDepartid() == null || balance.getDepartid().equals(0)) {
 			throw new Exception("部门编号不能为空");
 		}
 		if(departmentService.findDepartmentById(balance.getDepartid()) == null) {
 			throw new Exception("没有对应部门编号的部门，请检查输入的部门编号是否有误或新建此部门");
 		}
-		if(balance.getPrice().compareTo(new BigDecimal(0)) >=0 ) {
+		if(balance.getPrice().compareTo(new BigDecimal(0)) <=0 ) {
 			throw new Exception("价格应大于0");
 		}
 		if(balance.getCid() == 0) {

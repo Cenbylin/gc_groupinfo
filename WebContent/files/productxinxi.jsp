@@ -410,7 +410,7 @@ function link(){
 								    <td width="8%" align="center" bgcolor="#EEEEEE">选择</td>
 				            <td width="12%" height="20" align="center" bgcolor="#EEEEEE">产品编号</td>
 									 <td width="12%" height="20" align="center" bgcolor="#EEEEEE">产品名称</td>
-				           <td width="10%" align="center" bgcolor="#EEEEEE">数量</td>
+				           <!-- <td width="10%" align="center" bgcolor="#EEEEEE">数量</td> -->
 				            <td width="10%" align="center" bgcolor="#EEEEEE">价格</td>
 				           <td width="10%" align="center" bgcolor="#EEEEEE">供应商编号</td>
 				
@@ -434,7 +434,7 @@ function link(){
 								            <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
 				                    <td bgcolor="#FFFFFF"><%=v.getProdid() %></td>
 									          <td height="20" bgcolor="#FFFFFF"><%=v.getProdname() %></td>
-				                    <td bgcolor="#FFFFFF"><%=v.getbuycount() %></td>
+				                    <%-- <td bgcolor="#FFFFFF"><%=v.getbuycount() %></td> --%>
 				                     <td bgcolor="#FFFFFF"><%=v.getProdcount() %></td>
 				                    <td height="20" bgcolor="#FFFFFF"><%=v.getProvid() %></td>
 				                    

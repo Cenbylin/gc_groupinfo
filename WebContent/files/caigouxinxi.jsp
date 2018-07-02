@@ -82,10 +82,49 @@ function unselectAll(){
 }
 
 function link(){
-    document.getElementById("fom").action="${pageContext.request.contextPath}/buy/findAll2.do";
-   document.getElementById("fom").submit();
+	 document.getElementById("fom").action="${pageContext.request.contextPath}/buy/toadd.do";
+	   document.getElementById("fom").submit();
 }
-var bqstring="";
+function del(){
+	var obj = document.fom.elements;
+	var paramUrl = "";
+	for (var i = 0; i < obj.length; i++) {
+		if (obj[i].name == "delid" && obj[i].checked == true) {
+			paramUrl += obj[i].value + ":";
+
+		}
+	}
+	if (paramUrl == "") {
+		alert("请删除要选中的项目");
+		return;
+	}
+	if (paramUrl == "1:") {
+		alert("这个外键删不了 ，别删了，删其他的吧");
+		return;
+	}
+	
+	if(confirm("确定删除？")){
+		document.getElementById("fom").action = "${pageContext.request.contextPath}/buy/delete.do?id="
+			+ paramUrl;
+	    document.getElementById("fom").submit();
+	}
+}
+ function query() {
+	var obj = document.fom.elements;
+	var chazhao = "";
+	for (var i = 0; i < obj.length; i++) {
+		if (obj[i].name == "shuru") {
+			chazhao += obj[i].value
+
+		}
+	}
+	var params = encodeURI(encodeURI(chazhao));
+	document.getElementById("fom").action = "${pageContext.request.contextPath}/buy/findByIdmh.do?id="
+			+ params;
+	 document.getElementById("fom").submit(); 
+} 
+
+/* var bqstring="";
 $(function(){
 	$("#test").click(function() {
 		bqstring = $("input:checkbox[name='delid']:checked").map(function(index,elem) {
@@ -98,10 +137,10 @@ $(function(){
 	$("#chaxun").click(function() {
 		var bq= $("#text").val();
         //alert("搜索的值为："+bq);
-        $("#fom").attr("action","${pageContext.request.contextPath}/buy/findById3.do?id="+bq);
+        $("#fom").attr("action","${pageContext.request.contextPath}/buy/findById3.do?id="+shuru);
         $("#fom").submit();
     });
-});
+}); */
 </SCRIPT>
 
 <body  data-type="index">
@@ -387,10 +426,10 @@ $(function(){
 						    <tr>
 							  <td width="24"><img src="../images/ico07.gif" width="20" height="18" /></td>
 							  <td width="519"><label>采购单号:
-							      <input id="text" name="text" type="text" nam="gongs" />
+							      <input id="shuru" name="shuru" type="text" value="${msg }" />
 							  </label>
 							    </input>
-							    <input id="chaxun" name="chaxun" type="button" class="right-button02" value="查 询" /></td>
+							    <input id="chaxun" name="chaxun" type="submit" class="right-button02" value="查 询" onclick="query();"/></td>
 							   <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>	
 						    </tr>
 				          </table></td>
@@ -403,8 +442,8 @@ $(function(){
 				          	 <tr>
 				               <td height="20"><span class="newfont07">选择：<a href="#" class="right-font08" onclick="selectAll();">全选</a>-<a href="#" class="right-font08" onclick="unselectAll();">反选</a></span>
 						            
-						           <input id="test" name="test" type="button" class="right-button08" value="删除所选采购单信息"/>
-						           <input name="Submit" type="button" class="right-button08" value="添加采购单信息" onclick="link();" />
+						           <input id="test" name="test" type="submit" class="right-button08" value="删除所选采购单信息" onclick="del();"/>
+						           <input name="Submit" type="submit" class="right-button08" value="添加采购单信息" onclick="link();" />
 						           
 						           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 					              </td>
@@ -432,16 +471,16 @@ $(function(){
 				           <c:forEach items="${listBuy}" var="c">
 				           <tr>
 				
-				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid" value="${c.BUYID}"/></td>
-				                    <td bgcolor="#FFFFFF">${c.BUYID}</td>
-				                    <td bgcolor="#FFFFFF">${c.BUYCOUNT}</td>
-				                    <td bgcolor="#FFFFFF">${c.BUYTIME}</td>
-				                    <td bgcolor="#FFFFFF">${c.PROVID}</td>
-				                    <td bgcolor="#FFFFFF">${c.DEPARTID}</td>
-				                    <td bgcolor="#FFFFFF">${c.pRODID}</td>
+				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid" value="${c.buyid}"/></td>
+				                    <td bgcolor="#FFFFFF">${c.buyid}</td>
+				                    <td bgcolor="#FFFFFF">${c.buycount}</td>
+				                    <td bgcolor="#FFFFFF">${c.buytime}</td>
+				                    <td bgcolor="#FFFFFF">${c.provid}</td>
+				                    <td bgcolor="#FFFFFF">${c.prodid}</td>
+				                    <td bgcolor="#FFFFFF">${c.departid}</td>
 				
 				        
-				                    <td bgcolor="#FFFFFF"><a href="${pageContext.request.contextPath}/buy/findById.do?id=${c.BUYID}">编辑</a>&nbsp;|&nbsp;<a href="${pageContext.request.contextPath}/buy/findById2.do?id=${c.BUYID}">查看</a></td>
+				                    <td bgcolor="#FFFFFF"><a href="${pageContext.request.contextPath}/buy/findById.do?id=${c.buyid}">编辑</a>&nbsp;|&nbsp;<a href="${pageContext.request.contextPath}/buy/findById2.do?id=${c.buyid}">查看</a></td>
 				           </tr> 
 				           </c:forEach> 
 				                 <%}else
@@ -456,18 +495,20 @@ $(function(){
 				                    <td bgcolor="#FFFFFF"><%= ag.getBuycount()%></td>
 				                    <td bgcolor="#FFFFFF"><%= ag.getBuytime()%></td>
 				                    <td bgcolor="#FFFFFF"><%= ag.getProvid()%></td>
-				                    <td bgcolor="#FFFFFF"><%= ag.getDepartid()%></td>
-				                   s <td bgcolor="#FFFFFF"><%=ag.getProvid() %></td>
+				                    <td bgcolor="#FFFFFF"><%= ag.getDepartid()%></td><!-- 这里注意iod改 -->
+				                   <td bgcolor="#FFFFFF"><%=ag.getDepartid() %></td>
 				
 				        
-				                    <td bgcolor="#FFFFFF"><a href="${pageContext.request.contextPath}/buy/findById.do?id=${c.BUYID}">编辑</a>&nbsp;|&nbsp;<a href="${pageContext.request.contextPath}/buy/findById2.do?id=${c.BUYID}">查看</a></td>
+				                    <td bgcolor="#FFFFFF"><a href="${pageContext.request.contextPath}/buy/findById.do?id=${c.buyid}">编辑</a>&nbsp;|&nbsp;<a href="${pageContext.request.contextPath}/buy/findById2.do?id=${c.buyid}">查看</a></td>
 				           		</tr> 
 				               <%} %>
 				                  
 				                </table></td>
 				              </tr>
+				              <tr><td><c:out value="${delmsg }" /></td></tr>
 				            </table></td>
 				        </tr>
+				        
 				      </table>
 				      <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 				        <tr>

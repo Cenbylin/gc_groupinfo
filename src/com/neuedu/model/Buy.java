@@ -1,5 +1,6 @@
 package com.neuedu.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Buy {
@@ -8,10 +9,12 @@ public class Buy {
     private Double buycount;
 
     private Date buytime;
-
+    
     private Integer provid;
 
     private Integer departid;
+
+    private Integer prodid;
 
     public Integer getBuyid() {
         return buyid;
@@ -29,8 +32,10 @@ public class Buy {
         this.buycount = buycount;
     }
 
-    public Date getBuytime() {
-        return buytime;
+    public String getBuytime() {
+    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    	
+        return sdf.format(this.buytime);
     }
 
     public void setBuytime(Date buytime) {
@@ -51,5 +56,13 @@ public class Buy {
 
     public void setDepartid(Integer departid) {
         this.departid = departid;
+    }
+
+    public Integer getProdid() {
+        return prodid;
+    }
+
+    public void setProdid(Integer prodid) {
+        this.prodid = prodid;
     }
 }

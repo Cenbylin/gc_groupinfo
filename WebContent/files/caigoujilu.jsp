@@ -1,5 +1,5 @@
 <%@page import="java.util.Iterator"%>
-<%@page import="com.neuedu.model.Cgjl"%>
+<%@page import="com.neuedu.model.Buy"%>
 <%@page import="java.util.List" isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
@@ -424,22 +424,22 @@ $(function(){
 				           
 				           
 				           <%
-				              	List<Cgjl> list=(List<Cgjl>)request.getAttribute("listCgjl");
-				              	Iterator<Cgjl> it=list.iterator();
+				              	List<Buy> list=(List<Buy>)request.getAttribute("listCgjl");
+				              	Iterator<Buy> it=list.iterator();
 				              	while(it.hasNext()){
 				              		
-				              		Cgjl b=it.next();
+				              		Buy b=it.next();
 				              		
 				              	%>
 				           <tr>
 				
 				                    
-				                    <td bgcolor="#FFFFFF"><%=b.getBuyid1() %></td>
-				                    <td bgcolor="#FFFFFF"><%=b.getbuycount() %></td>
+				                    <td bgcolor="#FFFFFF"><%=b.getBuyid() %></td>
+				                    <td bgcolor="#FFFFFF"><%=b.getBuycount() %></td>
 				                    <td bgcolor="#FFFFFF"><%=b.getBuytime()  %></td>
 				                    <td bgcolor="#FFFFFF"><%=b.getProvid() %></td>
-				                    <td bgcolor="#FFFFFF"><%=b.getdepartid() %></td>
-				                    <td bgcolor="#FFFFFF"><%=b.getProdid() %></td>
+				                    <td bgcolor="#FFFFFF"><%=b.getProvid() %></td>
+				                    <td bgcolor="#FFFFFF"><%=b.getDepartid() %></td>
 				
 				        
 				                   

@@ -94,13 +94,6 @@
     from useraccount
     where USERID = #{userid,jdbcType=INTEGER}
   </select>
-  <!-- 自己添加的 -->
-  <select id="findUserByAccount" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from useraccount
-    where ACCOUNTS = #{account,jdbcType=INTEGER}
-  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from useraccount
     where USERID = #{userid,jdbcType=INTEGER}

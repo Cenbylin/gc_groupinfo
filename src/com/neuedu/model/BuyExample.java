@@ -404,6 +404,66 @@ public class BuyExample {
             addCriterion("DEPARTID not between", value1, value2, "departid");
             return (Criteria) this;
         }
+
+        public Criteria andProdidIsNull() {
+            addCriterion("PRODID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdidIsNotNull() {
+            addCriterion("PRODID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdidEqualTo(Integer value) {
+            addCriterion("PRODID =", value, "prodid");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdidNotEqualTo(Integer value) {
+            addCriterion("PRODID <>", value, "prodid");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdidGreaterThan(Integer value) {
+            addCriterion("PRODID >", value, "prodid");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("PRODID >=", value, "prodid");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdidLessThan(Integer value) {
+            addCriterion("PRODID <", value, "prodid");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdidLessThanOrEqualTo(Integer value) {
+            addCriterion("PRODID <=", value, "prodid");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdidIn(List<Integer> values) {
+            addCriterion("PRODID in", values, "prodid");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdidNotIn(List<Integer> values) {
+            addCriterion("PRODID not in", values, "prodid");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdidBetween(Integer value1, Integer value2) {
+            addCriterion("PRODID between", value1, value2, "prodid");
+            return (Criteria) this;
+        }
+
+        public Criteria andProdidNotBetween(Integer value1, Integer value2) {
+            addCriterion("PRODID not between", value1, value2, "prodid");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
