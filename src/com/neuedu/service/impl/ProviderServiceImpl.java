@@ -62,7 +62,7 @@ public class ProviderServiceImpl implements ProviderService{
 	@Override
 	public void deleteProvider(String id) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("删除的字符串"+id);
+		
 		String[] liStrings = id.split(":");
 		for (String string : liStrings) {
 			if (string == null || "".equals(string)) {				

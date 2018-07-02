@@ -451,13 +451,13 @@ $(function(){
 				                 %>
 				                  <tr>
 				
-				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid" value="<%= ag.getBUYID()%>"/></td>
-				                    <td bgcolor="#FFFFFF"><%= ag.getBUYID()%></td>
-				                    <td bgcolor="#FFFFFF"><%= ag.getBUYCOUNT()%></td>
-				                    <td bgcolor="#FFFFFF"><%= ag.getBUYTIME()%></td>
-				                    <td bgcolor="#FFFFFF"><%= ag.getPROVID()%></td>
-				                    <td bgcolor="#FFFFFF"><%= ag.getDEPARTID()%></td>
-				                    <td bgcolor="#FFFFFF"><%=ag.getpRODID() %></td>
+				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid" value="<%= ag.getBuyid() %>"/></td>
+				                    <td bgcolor="#FFFFFF"><%= ag.getBuyid()%></td>
+				                    <td bgcolor="#FFFFFF"><%= ag.getBuycount()%></td>
+				                    <td bgcolor="#FFFFFF"><%= ag.getBuytime()%></td>
+				                    <td bgcolor="#FFFFFF"><%= ag.getProvid()%></td>
+				                    <td bgcolor="#FFFFFF"><%= ag.getDepartid()%></td>
+				                   s <td bgcolor="#FFFFFF"><%=ag.getProvid() %></td>
 				
 				        
 				                    <td bgcolor="#FFFFFF"><a href="${pageContext.request.contextPath}/buy/findById.do?id=${c.BUYID}">编辑</a>&nbsp;|&nbsp;<a href="${pageContext.request.contextPath}/buy/findById2.do?id=${c.BUYID}">查看</a></td>
