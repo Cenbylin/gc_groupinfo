@@ -17,8 +17,14 @@ public interface ProductMapper {
     int insertSelective(Product record);
 
     List<Product> selectByExample(ProductExample example);
+    
+    List<Product> selectAll();
 
-    Product selectByPrimaryKey(Integer prodid);
+    List<Product> selectByPrimaryKey(Integer prodid);
+    
+    Product findByBuyId( Integer buyid );
+    
+    int update( double Buycount, double Prodcount, Integer prodid, Integer buyid );
 
     int updateByExampleSelective(@Param("record") Product record, @Param("example") ProductExample example);
 
@@ -27,4 +33,6 @@ public interface ProductMapper {
     int updateByPrimaryKeySelective(Product record);
 
     int updateByPrimaryKey(Product record);
+    
+    Double getBuycount();
 }
