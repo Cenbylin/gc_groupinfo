@@ -82,12 +82,23 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from product
-    where PRODID = #{prodid,jdbcType=INTEGER}
+  
+  <select id="selectAll" parameterType="com.neuedu.model.ProductExample" resultMap="BaseResultMap">
+    select p.PRODID, p.PRODNAME, b.BUYCOUNT, p.PRODCOUNT, b.PROVID, b.BUYID from buy as b, product as p where b.PROVID = p.PROVID
   </select>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  	select p.PRODID, p.PRODNAME, b.BUYCOUNT, p.PRODCOUNT, b.PROVID, b.BUYID from buy as b, product as p where b.PROVID = p.PROVID and p.PRODID = #{prodid,jdbcType=INTEGER}
+  </select>
+  
+  <select id="findByBuyId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  	select p.PRODID, p.PRODNAME, b.BUYCOUNT, p.PRODCOUNT, b.PROVID, b.BUYID from buy as b, product as p where b.PROVID = p.PROVID and b.BUYID = #{buyid,jdbcType=INTEGER}
+  </select>
+  
+  <update id="update" parameterType="com.neuedu.model.ProductExample" >  
+    UPDATE buy b , product p SET b.BUYCOUNT = #{0}, p.PRODCOUNT = #{1} WHERE p.PRODID = #{2} and b.BUYID = #{3}
+  </update>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from product
     where PRODID = #{prodid,jdbcType=INTEGER}

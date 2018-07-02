@@ -9,4 +9,5 @@ public interface ProductService {
 	List<Product> selectByPrimaryKey(Integer prodid);
 	Product findByBuyId( Integer buyid );
 	int update( double Buycount, double Prodcount, Integer prodid, Integer buyid );
+	
 }

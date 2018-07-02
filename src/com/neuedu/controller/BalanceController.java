@@ -50,5 +50,17 @@ public class BalanceController {
 		return "totalzc";
 
 	}
+	
+	@RequestMapping("findBYzcflbh")
+	public String findBYzcflbh(HttpServletRequest request, String zha) {
+		request.setAttribute("listBalance", balanceService.findBYzcflbh(Integer.parseInt(zha)));
+		return "totalzc";		
+	}	
+	
+	@RequestMapping("findBYbmbh")
+	public String findBYbmbh(HttpServletRequest request, String zha) {
+		request.setAttribute("listBalance", balanceService.findBYbmbh(Integer.parseInt(zha)));
+		return "totalzc";
+	}
 
 }

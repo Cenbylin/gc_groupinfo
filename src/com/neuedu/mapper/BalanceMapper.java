@@ -6,6 +6,10 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface BalanceMapper {
+	List<Balance> selectAll();
+    List<Balance> findBYzcflbh( Integer bid );
+    List<Balance> findBYbmbh( Integer departid );
+	
     long countByExample(BalanceExample example);
 
     int deleteByExample(BalanceExample example);

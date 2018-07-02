@@ -171,6 +171,19 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+  <!-- 自己加的 -->
+  <select id="selectAll" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select b.BID, b.BNAME, b.BCOUNT, c.CNAME, b.PRICE, b.DEPARTID from balance as b, category as c where b.CID = c.CID
+  </select>
+  
+  <select id="findBYzcflbh" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select b.BID, b.BNAME, b.BCOUNT, c.CNAME, b.PRICE, b.DEPARTID from balance as b, category as c where b.CID = c.CID and b.BID=#{bid,jdbcType=INTEGER}
+  </select>
+  
+  <select id="findBYbmbh" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select b.BID, b.BNAME, b.BCOUNT, c.CNAME, b.PRICE, b.DEPARTID from balance as b, category as c where b.CID = c.CID and b.DEPARTID=#{departid,jdbcType=INTEGER}
+  </select>
+  
   <update id="updateByExampleSelective" parameterType="map">
     update balance
     <set>

@@ -72,4 +72,24 @@ public class BalanceServiceImpl implements BalanceService{
 		return mapper.selectByExample(null);
 	}
 
+	@Override
+	public List<Balance> selectAll() {
+		// TODO Auto-generated method stub
+		return mapper.selectAll();
+	}
+
+	@Override
+	public List<Balance> findBYzcflbh(Integer bid) {
+		// TODO Auto-generated method stub
+		return mapper.findBYzcflbh(bid);
+	}
+
+	@Override
+	public List<Balance> findBYbmbh(Integer departid) {
+		// TODO Auto-generated method stub
+		return mapper.findBYbmbh(departid);
+	}
+
+	
+
 }

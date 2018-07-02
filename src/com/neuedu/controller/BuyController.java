@@ -74,7 +74,7 @@ public class BuyController {
 	public String findById(HttpServletRequest request,int id) {
 		request.setAttribute("Buy1", buyService.findById(id));
 		request.setAttribute("Buy2", providerService.findAllProvider());
-		request.setAttribute("Buy3", productService.findAllProduct());
+		request.setAttribute("Buy3", productService.selectAll());
 		request.setAttribute("Buy4", departmentService.findAllDepartment());
 		return "updatecaigou";
 	}
@@ -97,7 +97,7 @@ public class BuyController {
 	@RequestMapping("toadd")
 	public String prepareForAdd(HttpServletRequest request) {
 		request.setAttribute("Buy2", providerService.findAllProvider());
-		request.setAttribute("Buy3", productService.findAllProduct());
+		request.setAttribute("Buy3", productService.selectAll());
 		request.setAttribute("Buy4", departmentService.findAllDepartment());
 		return "addcaigou";
 	}
