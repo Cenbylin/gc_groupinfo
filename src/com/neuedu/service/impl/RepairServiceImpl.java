@@ -111,4 +111,11 @@ public class RepairServiceImpl implements RepairService {
 
 	}
 
+	@Override
+	public Repair findRepairById(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.selectByPrimaryKey(id);
+		
+	}
+
 }

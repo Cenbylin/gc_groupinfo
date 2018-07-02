@@ -218,7 +218,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                      <i class="am-icon-angle-right"></i>
                                      <span>报修管理</span>
                                 </a>
-								<a href="${pageContext.request.contextPath}/buyProuduct/findAll4.do">
+								<a href="${pageContext.request.contextPath}/scrap/findAll2.do">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报废管理</span>
                                 </a>

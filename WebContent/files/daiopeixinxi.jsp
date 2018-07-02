@@ -89,10 +89,47 @@ function unselectAll(){
 }
 
 function link(){
-    document.getElementById("fom").action="adddiaopei.htm";
+    document.getElementById("fom").action="${pageContext.request.contextPath}/translate/foradd.do";
    document.getElementById("fom").submit();
 }
+function del(){
+	var obj = document.fom.elements;
+	var paramUrl = "";
+	for (var i = 0; i < obj.length; i++) {
+		if (obj[i].name == "delid" && obj[i].checked == true) {
+			paramUrl += obj[i].value + ":";
 
+		}
+	}
+	if (paramUrl == "") {
+		alert("请删除要选中的项目");
+		return;
+	}
+	if (paramUrl == "1:") {
+		alert("这个外键删不了 ，别删了，删其他的吧");
+		return;
+	}
+	
+	if(confirm("确定删除？")){
+		document.getElementById("fom").action = "${pageContext.request.contextPath}/translate/delete.do?id="
+			+ paramUrl;
+	    document.getElementById("fom").submit();
+	}
+}
+function query() {
+	var obj = document.fom.elements;
+	var chazhao = "";
+	for (var i = 0; i < obj.length; i++) {
+		if (obj[i].name == "shuru") {
+			chazhao += obj[i].value
+
+		}
+	}
+	var params = encodeURI(encodeURI(chazhao));
+	document.getElementById("fom").action = "${pageContext.request.contextPath}/translate/findByIdmh.do?id="
+			+ params;
+	 document.getElementById("fom").submit(); 
+}
 </SCRIPT>
 
 <body data-type="index">
@@ -380,10 +417,10 @@ function link(){
 						    <tr>
 							  <td width="24"><img src="../images/ico07.gif" width="20" height="18" /></td>
 							  <td width="519"><label>调配编号:
-							      <input name="text" type="text" nam="gongs" />
+							      <input name="shuru" type="text" value="${msg }" />
 							  </label>
 							   
-							    <input name="Submit" type="button" class="right-button02" value="查询" /></td>
+							    <input name="Submit" type="button" class="right-button02" value="查询" onclick="query();"/></td>
 							   <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>	
 						    </tr>
 				          </table></td>
@@ -395,7 +432,7 @@ function link(){
 				          <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 				          	 <tr>
 				               <td height="20"><span class="newfont07">选择：<a href="#" class="right-font08" onclick="selectAll();">全选</a>-<a href="#" class="right-font08" onclick="unselectAll();">反选</a></span>
-						           <input name="Submit" type="button" class="right-button08" value="删除所选调配信息" /> 
+						           <input name="Submit" type="button" class="right-button08" value="删除所选调配信息" onclick="del();"/> 
 				               <input name="Submit" type="button" class="right-button08" value="添加调配信息" onclick="link();" />
 						           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 					              </td>
@@ -423,12 +460,12 @@ function link(){
 				           <tr>
 				
 				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
-				                    <td bgcolor="#FFFFFF">${c.tID }</td>
-				                    <td bgcolor="#FFFFFF">${c.tCOUNT }</td>
-				                    <td bgcolor="#FFFFFF">${c.tRTIME }</td>
-				                    <td bgcolor="#FFFFFF">${c.aREAID }</td>
-				                    <td bgcolor="#FFFFFF">${c.dEPARTID }</td>
-				                    <td bgcolor="#FFFFFF"><a href="updatediaopei.html">编辑</a>&nbsp;|&nbsp;<a href="diaopeidetails.html">查看</a></td>
+				                    <td bgcolor="#FFFFFF">${c.tid }</td>
+				                    <td bgcolor="#FFFFFF">${c.tcount }</td>
+				                    <td bgcolor="#FFFFFF">${c.trtime }</td>
+				                    <td bgcolor="#FFFFFF">${c.bid }</td>
+				                    <td bgcolor="#FFFFFF">${c.departid }</td>
+				                    <td bgcolor="#FFFFFF"><a href="<%=path%>/translate/forupdate.do?id=${c.tid}">编辑</a>&nbsp;|&nbsp;<a href="<%=path%>/translate/findById.do?id=${c.tid}">查看</a></td>
 				           </tr> 
 				           </c:forEach>
 				           

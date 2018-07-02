@@ -10,7 +10,9 @@ public interface RepairService {
 	public void deleteRepair(String id)throws Exception;
 	public void updateRepair(Repair repair)throws Exception;
 	public Repair findRepairById(String id)throws Exception;
+	public Repair findRepairById(int id)throws Exception;
 	List<Repair> selectAll();
 	List<Repair> findBybxbh( Integer repairid );
+	
 
 }

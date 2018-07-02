@@ -9,5 +9,7 @@ public interface ScrapService {
 	void addScrap(Scrap scrap) throws Exception;
 	void updateScrap(Scrap scrap) throws Exception;
 	void dedleteScrap(String id) throws Exception;
+	Scrap findScrapById(String id) throws Exception;
+	Scrap findScrapById(int id) throws Exception;
 
 }

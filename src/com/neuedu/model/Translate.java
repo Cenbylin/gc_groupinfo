@@ -1,5 +1,6 @@
 package com.neuedu.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Translate {
@@ -29,8 +30,9 @@ public class Translate {
         this.tcount = tcount;
     }
 
-    public Date getTrtime() {
-        return trtime;
+    public String getTrtime() {
+    	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyy-MM-dd");
+        return simpleDateFormat.format(this.trtime);
     }
 
     public void setTrtime(Date trtime) {

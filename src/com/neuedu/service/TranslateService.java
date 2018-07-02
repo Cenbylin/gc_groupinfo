@@ -6,10 +6,11 @@ import com.neuedu.model.Translate;
 
 public interface TranslateService {
 	public List<Translate> findAllTranslate();
-	public void findTranslateById(int id);
-	public void findTranslateById(String id)throws Exception;
+	public Translate findTranslateById(int id);
+	public Translate findTranslateById(String id)throws Exception;
 	public void addTranslate(Translate translate) throws Exception;
-	public void deleteTranslate();
+	public void deleteTranslate(String id) throws Exception;
+	public void updateTranslate(Translate translate) throws Exception;
 	List<Translate> selectAll();
 	List<Translate> findBytpbh( int tid );
 	

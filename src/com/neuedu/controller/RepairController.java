@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.WebRequest;
 
+import com.neuedu.model.Repair;
 import com.neuedu.service.RepairService;
 
 import java.util.Date;
@@ -48,6 +49,68 @@ public class RepairController {
 	public String findAllRepair(HttpServletRequest request) {
 		request.setAttribute("listBuy3", repairService.selectAll());
 		return "baoxiuxinxi";
+	}
+	
+	@RequestMapping("foradd")
+	public String forAddScrap(HttpServletRequest request) {
+		request.setAttribute("", "");
+		return "";
+	}
+	
+	@RequestMapping("add")
+	public String addRepair(HttpServletRequest request,Repair repair) {
+		try {
+			repairService.addRepair(repair);
+			request.setAttribute("", "");
+			return "";
+		} catch (Exception e) {
+			// TODO: handle exception
+			request.setAttribute("msg", e.getMessage());
+			return "";
+		}
+	}
+	
+	@RequestMapping("delete")
+	public String deleteRepair(HttpServletRequest request,String id) {
+		try {
+			repairService.deleteRepair(id);
+			request.setAttribute("", "");
+			return "";
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			request.setAttribute("msg", e.getMessage());
+			return "";
+		}
+		
+	}
+	
+	@RequestMapping("findById")
+	public String findBYId(HttpServletRequest request,int id) {
+		try {
+			request.setAttribute("", repairService.findRepairById(id));
+			request.setAttribute("", "");
+			return "";
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			request.setAttribute("msg", e.getMessage());
+			return "";
+		}
+	}
+	
+	@RequestMapping("findByIdmh")
+	public String findBYId(HttpServletRequest request,String id) {
+		try {
+			request.setAttribute("", repairService.findRepairById(id));
+			request.setAttribute("", "");
+			return "";
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			request.setAttribute("msg", e.getMessage());
+			return "";
+		}
 	}
 	
 
