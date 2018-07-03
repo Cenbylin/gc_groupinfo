@@ -414,7 +414,7 @@ html {
 
 													<%
 														Scrap ag = (Scrap) request.getAttribute("query");
-														SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+														
 													%>
 
 													<tr>
@@ -432,7 +432,7 @@ html {
 														<td nowrap align="right" width="15%">报废时间:</td>
 														<td width="35%"><input name='stime' type="text"
 															class="text" style="width: 154px"
-															value="<%=format.format(ag.getStime())%>" />
+															value="<%=ag.getStime()%>" />
 														<td nowrap align="right" width="15%">资产编号:</td>
 														<td width="35%"><select name="bid"
 															style="width: 154px">

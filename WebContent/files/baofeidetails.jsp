@@ -389,7 +389,7 @@ function link(){
 				  
 				  <%
 									 	Scrap ag=(Scrap)request.getAttribute("query");
-										 SimpleDateFormat format0 = new SimpleDateFormat("yyyy-MM-dd");
+										 
 										 
 									 %>
 				  
@@ -403,7 +403,7 @@ function link(){
 				  </tr>
 				  <tr>
 				    <td width="16%" height="20" align="right" bgcolor="#FFFFFF">报修时间:</td>
-				    <td width="84%" colspan="2" bgcolor="#FFFFFF"><%=format0.format(ag.getStime()) %></td>
+				    <td width="84%" colspan="2" bgcolor="#FFFFFF"><%=ag.getStime() %></td>
 				  </tr>
 				   <tr>
 				    <td width="16%" height="20" align="right" bgcolor="#FFFFFF">资产编号:</td>
