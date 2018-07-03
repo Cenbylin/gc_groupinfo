@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.WebRequest;
 
 import com.neuedu.model.Repair;
+import com.neuedu.service.BalanceService;
+import com.neuedu.service.DepartmentService;
 import com.neuedu.service.RepairService;
 
 import java.util.Date;
@@ -24,6 +26,10 @@ import java.util.Date;
 public class RepairController {
 	@Autowired
 	RepairService repairService;
+	@Autowired
+	BalanceService balanceService;
+	@Autowired
+	DepartmentService departmentService;
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder, WebRequest request) {
@@ -53,20 +59,23 @@ public class RepairController {
 	
 	@RequestMapping("foradd")
 	public String forAddScrap(HttpServletRequest request) {
-		request.setAttribute("", "");
-		return "";
+		request.setAttribute("balanceList", balanceService.selectAll());
+		request.setAttribute("departmentList", departmentService.findAllDepartment());
+		return "addbaoxiu";
 	}
 	
 	@RequestMapping("add")
 	public String addRepair(HttpServletRequest request,Repair repair) {
 		try {
 			repairService.addRepair(repair);
-			request.setAttribute("", "");
-			return "";
+			request.setAttribute("listBuy3", repairService.selectAll());
+			return "baoxiuxinxi";
 		} catch (Exception e) {
 			// TODO: handle exception
 			request.setAttribute("msg", e.getMessage());
-			return "";
+			request.setAttribute("balanceList", balanceService.selectAll());
+			request.setAttribute("departmentList", departmentService.findAllDepartment());
+			return "addbaoxiu";
 		}
 	}
 	
@@ -74,13 +83,14 @@ public class RepairController {
 	public String deleteRepair(HttpServletRequest request,String id) {
 		try {
 			repairService.deleteRepair(id);
-			request.setAttribute("", "");
-			return "";
+			request.setAttribute("listBuy3", repairService.selectAll());
+			return "baoxiuxinxi";
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 			request.setAttribute("msg", e.getMessage());
-			return "";
+			request.setAttribute("listBuy3", repairService.selectAll());
+			return "baoxiuxinxi";
 		}
 		
 	}
@@ -88,29 +98,65 @@ public class RepairController {
 	@RequestMapping("findById")
 	public String findBYId(HttpServletRequest request,int id) {
 		try {
-			request.setAttribute("", repairService.findRepairById(id));
-			request.setAttribute("", "");
-			return "";
+			request.setAttribute("query", repairService.findRepairById(id));
+			
+			return "baoxiudetails";
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 			request.setAttribute("msg", e.getMessage());
-			return "";
+			request.setAttribute("listBuy3", repairService.selectAll());
+			return "baoxiuxinxi";
 		}
 	}
 	
 	@RequestMapping("findByIdmh")
 	public String findBYId(HttpServletRequest request,String id) {
 		try {
-			request.setAttribute("", repairService.findRepairById(id));
-			request.setAttribute("", "");
-			return "";
+			request.setAttribute("query", repairService.findRepairById(id));
+			return "baoxiudetails";
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 			request.setAttribute("msg", e.getMessage());
-			return "";
+			request.setAttribute("listBuy3", repairService.selectAll());
+			return "baoxiuxinxi";
 		}
+	}
+	
+	@RequestMapping("forupdate")
+	public String forUpdate(HttpServletRequest request, int id) {
+		try {
+			request.setAttribute("balanceList", balanceService.selectAll());
+			request.setAttribute("departmentList", departmentService.findAllDepartment());
+			request.setAttribute("query", repairService.findRepairById(id));
+			return "updatebaoxiu";
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			request.setAttribute("msg", e.getMessage());
+			request.setAttribute("listBuy3", repairService.selectAll());
+			return "baoxiuxinxi";
+		}
+		
+	}
+	
+	@RequestMapping("update")
+	public String updateRepair(HttpServletRequest request,Repair repair) {
+		try {
+			repairService.updateRepair(repair);
+			request.setAttribute("listBuy3", repairService.selectAll());
+			return "baoxiuxinxi";
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			request.setAttribute("balanceList", balanceService.selectAll());
+			request.setAttribute("departmentList", departmentService.findAllDepartment());
+			request.setAttribute("msg", e.getMessage());
+			return "updatebaoxiu";
+		}
+		
+		
 	}
 	
 

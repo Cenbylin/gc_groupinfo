@@ -371,7 +371,7 @@ document.getElementById("aa").style.display="";
 <%--内容 --%>
         <div class="tpl-content-wrapper">
             
-            <form action="${pageContext.request.contextPath}/repair/update.do" method="post"  name="form" >
+            <form action="${pageContext.request.contextPath}/Repair/update.do" method="post"  name="form" >
 				<div class="MainDiv">
 				<table width="99%" border="0" cellpadding="0" cellspacing="0" class="CContent">
 				  <tr>
@@ -401,19 +401,19 @@ document.getElementById("aa").style.display="";
 									 
 									  <tr>
 									  <td nowrap align="right" width="15%">报修单号:</td>
-									    <td width="35%"><input name='REPAIRID' type="text" class="text" style="width:154px" value="<%=ag.getRepairid() %>"  readonly="readonly" />
+									    <td width="35%"><input name='repairid' type="text" class="text" style="width:154px" value="<%=ag.getRepairid() %>"  readonly="readonly" />
 								        <span class="red">*</span></td>
 									    <td nowrap align="right" width="15%">报修数量:</td>
-									    <td width="35%"><input name='RCOUNT' type="text" class="text" style="width:154px" value="<%=ag.getRcount() %>" />
+									    <td width="35%"><input name='rcount' type="text" class="text" style="width:154px" value="<%=ag.getRcount() %>" />
 									  </tr>
 									   <tr>
 									  <td nowrap align="right" width="15%">报修时间:</td>
-									    <td width="35%"><input name='RTIME' type="text" class="text" style="width:154px" value="<%=format.format(ag.getRtime()) %>" />
+									    <td width="35%"><input name='rtime' type="text" class="text" style="width:154px" value="<%=format.format(ag.getRtime()) %>" />
 								      
 									    <td nowrap align="right" width="15%">资产编号:</td>
 									    <td width="35%">
 									    
-									    <select name="BID" style="width:154px">
+									    <select name="bid" style="width:154px">
 									    		<%
 										    		List<Balance> list=(List<Balance>)request.getAttribute("balanceList");
 									              	Iterator<Balance> it=list.iterator();
@@ -434,7 +434,7 @@ document.getElementById("aa").style.display="";
 									   <tr>
 									  <td nowrap align="right" width="15%">部门编号:</td>
 									    <td width="35%">
-								       		<select name="DEPARTID" style="width:154px">
+								       		<select name="departid" style="width:154px">
 									    		<%
 										    		List<Department> list1=(List<Department>)request.getAttribute("departmentList");
 									              	Iterator<Department> it1=list1.iterator();
@@ -455,7 +455,7 @@ document.getElementById("aa").style.display="";
 									    	
 									    	
 									  </tr>
-									
+									<tr><td><c:out value="${msg }" /></td></tr>
 									  </table>
 							  <br />
 								</fieldset>			</TD>

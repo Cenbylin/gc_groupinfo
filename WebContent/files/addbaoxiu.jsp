@@ -115,7 +115,7 @@ html {
 	function link() {
 		document.getElementById("fom").action = "${pageContext.request.contextPath}/files/addcaigou.jsp";
 		document.getElementById("fom").submit();
-	}
+	}/* 
 	function tishi() {
 		var a = confirm('数据库中保存有该人员基本信息，您可以修改或保留该信息。');
 		if (a != true) return false;
@@ -158,7 +158,7 @@ html {
 					$("#note").text("当前剩余数量为：" + res.count);
 				});
 		})
-	})
+	}) */
 </SCRIPT>
 <body class="ContentBody" data-type="index">
 	<header class="am-topbar am-topbar-inverse admin-header">
@@ -419,8 +419,8 @@ html {
 		<%--内容 --%>
 		<div class="tpl-content-wrapper">
 
-			<form action="${pageContext.request.contextPath}/repair/addRepair.do"
-				method="post" name="form" onsubmit="return verification()">
+			<form action="${pageContext.request.contextPath}/Repair/add.do"
+				method="post" name="form" >
 				<div class="MainDiv">
 					<table width="99%" border="0" cellpadding="0" cellspacing="0"
 						class="CContent">
@@ -451,19 +451,19 @@ html {
 										<tr>
 
 											<td width="16%" align="right" nowrap="nowrap">报修数量:</td>
-											<td width="34%"><input class="text" id="RCOUNT"
-												name='RCOUNT' style="width:154px" value="" /></td>
+											<td width="34%"><input class="text" id="rcount"
+												name='rcount' style="width:154px" value="" /></td>
 										</tr>
 
 										<tr>
 
 											<td nowrap="nowrap" align="right">报修时间:</td>
-											<td><input class="text" id="RTIME" name='RTIME'
+											<td><input class="text" id="rtime" name='rtime'
 												style="width:154px" value="" /></td>
 										</tr>
 										<tr>
 											<td align="right">产品编号:</td>
-											<td><select name="BID" style="width:154px">
+											<td><select name="bid" style="width:154px">
 													<%
 														List<Balance> list1 = (List<Balance>) request.getAttribute("balanceList");
 														Iterator<Balance> it1 = list1.iterator();
@@ -480,7 +480,7 @@ html {
 											</select></td>
 										<tr>
 											<td align="right">部门编号:</td>
-											<td><select name="DEPARTID" style="width:154px">
+											<td><select name="departid" style="width:154px">
 													<%
 														List<Department> list2 = (List<Department>) request.getAttribute("departmentList");
 														Iterator<Department> it2 = list2.iterator();
@@ -498,6 +498,7 @@ html {
 
 
 										</tr>
+										<tr><td><c:out  value="${msg }" /></td></tr>
 									</table>
 									<br />
 								</fieldset>

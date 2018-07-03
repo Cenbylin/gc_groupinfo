@@ -1,5 +1,6 @@
 package com.neuedu.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Repair {
@@ -29,8 +30,9 @@ public class Repair {
         this.rcount = rcount;
     }
 
-    public Date getRtime() {
-        return rtime;
+    public String getRtime() {
+    	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return format.format(rtime);
     }
 
     public void setRtime(Date rtime) {

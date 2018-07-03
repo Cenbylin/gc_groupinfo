@@ -91,8 +91,46 @@ function unselectAll(){
 }
 
 function link(){
-    document.getElementById("fom").action="addbaoxiu.htm";
+    document.getElementById("fom").action="${pageContext.request.contextPath}/Repair/foradd.do";
    document.getElementById("fom").submit();
+}
+function del() {
+	var obj = document.fom.elements;
+	var paramUrl = "";
+	for (var i = 0; i < obj.length; i++) {
+		if (obj[i].name == "delid" && obj[i].checked == true) {
+			paramUrl += obj[i].value + ":";
+
+		}
+	}
+	if (paramUrl == "") {
+		alert("请删除要选中的项目");
+		return;
+	}
+	if (paramUrl == "1:") {
+		alert("这个外键删不了 ，别删了，删其他的吧");
+		return;
+	}
+	document.getElementById("fom").action = "${pageContext.request.contextPath}/Repair/delete.do?id="
+			+ paramUrl;
+	document.getElementById("fom").submit();
+	/* console.log("${pageContext.request.contextPath}/category/delete.action?cid="+paramUrl);
+	document.location.href="${pageContext.request.contextPath}/category/delete.do?cid="+paramUrl; */
+
+}
+function check() {
+	var obj = document.fom.elements;
+	var chazhao = "";
+	for (var i = 0; i < obj.length; i++) {
+		if (obj[i].name == "shuru") {
+			chazhao += obj[i].value
+
+		}
+	}
+	
+	var params = encodeURI(encodeURI(chazhao));
+	document.getElementById("fom").action = "${pageContext.request.contextPath}/Repair/findByIdmh.do?id="
+			+ params;
 }
 
 </SCRIPT>
@@ -381,12 +419,12 @@ function link(){
 						    <tr>
 							  <td width="24"><img src="../images/ico07.gif" width="20" height="18" /></td>
 							  <td width="519"><label>报修编号:
-							      <input name="text" type="text" nam="gongs" />
+							      <input name="shuru" type="text" nam="gongs" />
 							  </label>
 							   
-							    <input name="Submit" type="button" class="right-button02" value="查询" /></td>
+							    <input name="Submit" type="submit" class="right-button02" value="查询" onclick= "check();"/></td>
 							   <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>	
-						    </tr>
+						    </tr>s
 				          </table></td>
 				        </tr>
 				    </table></td></tr>
@@ -396,7 +434,7 @@ function link(){
 				          <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 				          	 <tr>
 				               <td height="20"><span class="newfont07">选择：<a href="#" class="right-font08" onclick="selectAll();">全选</a>-<a href="#" class="right-font08" onclick="unselectAll();">反选</a></span>
-						           <input name="Submit" type="button" class="right-button08" value="删除所选报修信息" /> 
+						           <input name="Submit" type="button" class="right-button08" value="删除所选报修信息" onclick="del();"/> 
 				               <input name="Submit" type="button" class="right-button08" value="添加报修信息" onclick="link();" />
 						           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 					              </td>
@@ -424,13 +462,13 @@ function link(){
 				           
 				           <tr>
 				
-				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
+				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid" value="${c.repairid }"/></td>
 				                    <td bgcolor="#FFFFFF">${c.repairid }</td>
 				                    <td bgcolor="#FFFFFF">${c.rcount }</td>
 				                    <td bgcolor="#FFFFFF">${c.rtime }</td>
 				                    <td bgcolor="#FFFFFF">${c.departid }</td>
 				                    <td bgcolor="#FFFFFF">${c.bid }</td>
-				                    <td bgcolor="#FFFFFF"><a href="updatebaoxiu.html">编辑</a>&nbsp;|&nbsp;<a href="baoxiudetails.html">查看</a></td>
+				                    <td bgcolor="#FFFFFF"><a href="${pageContext.request.contextPath}/Repair/forupdate.do?id=${c.repairid }">编辑</a>&nbsp;|&nbsp;<a href="${pageContext.request.contextPath}/Repair/findById.do?id=${c.repairid }">查看</a></td>
 				           </tr> 
 				           
 				           </c:forEach>
@@ -438,6 +476,7 @@ function link(){
 				          
 				            </table></td>
 				        </tr>
+				        <tr><td><c:out value="${msg }" /></td></tr>
 				      </table>
 				
 				            </table></td>
