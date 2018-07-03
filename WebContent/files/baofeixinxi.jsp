@@ -89,10 +89,34 @@ function unselectAll(){
 }
 
 function link(){
-    document.getElementById("fom").action="adddbaofei.htm";
+    document.getElementById("fom").action="${pageContext.request.contextPath}/scrap/foradd.do";
    document.getElementById("fom").submit();
 }
 
+function del() {
+	var obj = document.fom.elements;
+	var paramUrl = "";
+	for (var i = 0; i < obj.length; i++) {
+		if (obj[i].name == "delid" && obj[i].checked == true) {
+			paramUrl += obj[i].value + ":";
+
+		}
+	}
+	if (paramUrl == "") {
+		alert("请删除要选中的项目");
+		return;
+	}
+	if (paramUrl == "1:") {
+		alert("这个外键删不了 ，别删了，删其他的吧");
+		return;
+	}
+	document.getElementById("fom").action = "${pageContext.request.contextPath}/scrap/delete.do?id="
+			+ paramUrl;
+	document.getElementById("fom").submit();
+	/* console.log("${pageContext.request.contextPath}/category/delete.action?cid="+paramUrl);
+	document.location.href="${pageContext.request.contextPath}/category/delete.do?cid="+paramUrl; */
+
+}
 </SCRIPT>
 <body data-type="index">
 
@@ -394,7 +418,7 @@ function link(){
 				          <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 				          	 <tr>
 				               <td height="20"><span class="newfont07">选择：<a href="#" class="right-font08" onclick="selectAll();">全选</a>-<a href="#" class="right-font08" onclick="unselectAll();">反选</a></span>
-						           <input name="Submit" type="button" class="right-button08" value="删除所选报修信息" /> 
+						           <input name="Submit" type="button" class="right-button08" value="删除所选报修信息" onclick="del();"/> 
 				               <input name="Submit" type="button" class="right-button08" value="添加报修信息" onclick="link();" />
 						           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 					              </td>
@@ -427,7 +451,7 @@ function link(){
 				                    <td bgcolor="#FFFFFF">${c.stime }</td>
 				                    <td bgcolor="#FFFFFF">${c.bid }</td>
 				                    <td bgcolor="#FFFFFF">${c.departid }</td>
-				                    <td bgcolor="#FFFFFF"><a href="updatebaofei.html">编辑</a>&nbsp;|&nbsp;<a href="baofeidetails.html">查看</a></td>
+				                    <td bgcolor="#FFFFFF"><a href="${pageContext.request.contextPath}/scrap/forupdate.do?id=${c.repairid }">编辑</a>&nbsp;|&nbsp;<a href="baofeidetails.html">查看</a></td>
 				           </tr> 
 				           </c:forEach>
 				           

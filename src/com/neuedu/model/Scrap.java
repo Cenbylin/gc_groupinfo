@@ -1,5 +1,6 @@
 package com.neuedu.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Scrap {
@@ -30,7 +31,7 @@ public class Scrap {
     }
 
     public Date getStime() {
-        return stime;
+    	return this.stime;
     }
 
     public void setStime(Date stime) {

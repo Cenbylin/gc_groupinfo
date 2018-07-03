@@ -54,7 +54,49 @@ html { overflow-x: auto; overflow-y: auto; border:0;}
     <script src="${pageContext.request.contextPath}/js/jquery-1.11.3.js"></script>
 <link href="../css/css.css" rel="stylesheet" type="text/css" />
 <script type="text/JavaScript">
+function queryCaigou() {
+	var obj = document.fom.elements;
+	var chazhao = "";
+	for (var i = 0; i < obj.length; i++) {
+		if (obj[i].name == "caigou") {
+			chazhao += obj[i].value
 
+		}
+	}
+	var params = encodeURI(encodeURI(chazhao));
+	document.getElementById("fom").action = "${pageContext.request.contextPath}/buy/findByIdmh.do?id="
+			+ params;
+	 document.getElementById("fom").submit(); 
+} 
+function queryDiaopei() {
+	var obj = document.fom.elements;
+	var chazhao = "";
+	for (var i = 0; i < obj.length; i++) {
+		if (obj[i].name == "diaopei") {
+			chazhao += obj[i].value
+
+		}
+	}
+	var params = encodeURI(encodeURI(chazhao));
+	document.getElementById("fom").action = "${pageContext.request.contextPath}/translate/findByIdmh.do?id="
+			+ params;
+	 document.getElementById("fom").submit(); 
+}
+
+function queryBaoxiu() {
+	var obj = document.fom.elements;
+	var chazhao = "";
+	for (var i = 0; i < obj.length; i++) {
+		if (obj[i].name == "baoxiu") {
+			chazhao += obj[i].value
+
+		}
+	}
+	var params = encodeURI(encodeURI(chazhao));
+	document.getElementById("fom").action = "${pageContext.request.contextPath}/Repair/findByIdmh.do?id="
+			+ params;
+	document.getElementById("fom").submit(); 
+}
 </script>
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
 </head>
@@ -383,10 +425,10 @@ $(function(){
 						    <tr>
 							  <td width="24"><img src="../images/ico07.gif" width="20" height="18" /></td>
 							  <td width="519"><label>按采购单号:
-							      <input name="text" type="text" nam="gongs" />
+							      <input name="caigou" type="text" nam="gongs" />
 							  </label>
 							   
-							    <input name="Submit" type="button" class="right-button02" value="盘点" /></td>
+							    <input name="Submit" type="button" class="right-button02" value="盘点" onclick="queryCaigou();"/></td>
 							   <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>	
 						    </tr>
 				          </table></td>
@@ -430,7 +472,8 @@ $(function(){
 				                    <td bgcolor="#FFFFFF">${c.prodid}</td>
 				
 				        
-				                    <td bgcolor="#FFFFFF"><a href="${pageContext.request.contextPath}/buy/findById.do?id=${c.buyid}">编辑</a>&nbsp;|&nbsp;<a href="${pageContext.request.contextPath}/buy/findById2.do?id=${c.buyid}">查看</a></td>
+				                    <td bgcolor="#FFFFFF"><a href="${pageContext.request.contextPath}/buy/findById.do?id=${c.buyid}">编辑</a>&nbsp;|&nbsp;
+				                    <a href="${pageContext.request.contextPath}/buy/findById2.do?id=${c.buyid}">查看</a></td>
 				           	
 				           </tr> 
 				           
@@ -476,10 +519,10 @@ $(function(){
 				        <tr>
 				        <td width="24"><img src="../images/ico07.gif" width="20" height="18" /></td>
 				        <td width="519"><label>按调配编号:
-				            <input name="text" type="text" nam="gongs" />
+				            <input name="diaopei" type="text" nam="gongs" />
 				        </label>
 				         
-				          <input name="Submit" type="button" class="right-button02" value="盘点" /></td>
+				          <input name="Submit" type="button" class="right-button02" value="盘点" onclick="queryDiaopei();"/></td>
 				         <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>  
 				        </tr>
 				          </table></td>
@@ -522,7 +565,8 @@ $(function(){
 				                    <td bgcolor="#FFFFFF">${c.trtime}</td>
 				                    <td bgcolor="#FFFFFF">${c.bid}</td>
 				                    <td bgcolor="#FFFFFF">${c.departid}</td>
-				                    <td bgcolor="#FFFFFF"><a href="updatecaigou.htm">编辑</a>&nbsp;|&nbsp;<a href="caigoudetails.html">查看</a></td>
+				                    <td bgcolor="#FFFFFF"><a href="${pageContext.request.contextPath}/translate/forupdate.do?id=${c.tid}">编辑</a>&nbsp;|&nbsp;
+				                    <a href="${pageContext.request.contextPath}/translate/findById.do?id=${c.tid}">查看</a></td>
 				           </tr> 
 				           
 				           </c:forEach>
@@ -565,10 +609,10 @@ $(function(){
 				        <tr>
 				        <td width="24"><img src="../images/ico07.gif" width="20" height="18" /></td>
 				        <td width="519"><label>按报修编号:
-				            <input name="text" type="text" nam="gongs" />
+				            <input name="baoxiu" type="text" nam="gongs" />
 				        </label>
 				         
-				          <input name="Submit" type="button" class="right-button02" value="盘点" /></td>
+				          <input name="Submit" type="button" class="right-button02" value="盘点" onclick="queryBaoxiu();"/></td>
 				         <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>  
 				        </tr>
 				          </table></td>
@@ -608,7 +652,8 @@ $(function(){
 				                    <td bgcolor="#FFFFFF">${c.rcount}</td>
 				                    <td bgcolor="#FFFFFF">${c.rtime}</td>
 				                    <td bgcolor="#FFFFFF">${c.departid}</td>
-				                    <td bgcolor="#FFFFFF"><a href="updatecaigou.htm">编辑</a>&nbsp;|&nbsp;<a href="caigoudetails.html">查看</a></td>
+				                    <td bgcolor="#FFFFFF"><a href="${pageContext.request.contextPath}/Repair/forupdate.do?id=${c.repairid }">编辑</a>&nbsp;|&nbsp;
+				                    <a href="${pageContext.request.contextPath}/Repair/findById.do?id=${c.repairid }">查看</a></td>
 				           </tr> 
 				           </c:forEach>
 				           
@@ -650,7 +695,7 @@ $(function(){
 				        <tr>
 				        <td width="24"><img src="../images/ico07.gif" width="20" height="18" /></td>
 				        <td width="519"><label>按报废编号:
-				            <input name="text" type="text" nam="gongs" />
+				            <input name="baofei" type="text" nam="gongs" />
 				        </label>
 				         
 				          <input name="Submit" type="button" class="right-button02" value="盘点" /></td>

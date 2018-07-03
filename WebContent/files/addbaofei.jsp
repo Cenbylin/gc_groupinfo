@@ -418,7 +418,7 @@ html {
 		<%--内容 --%>
 		<div class="tpl-content-wrapper">
 
-			<form action="${pageContext.request.contextPath}/scrap/addScrap.do"
+			<form action="${pageContext.request.contextPath}/scrap/add.do"
 				method="post" name="form" onsubmit="return verification()">
 				<div class="MainDiv">
 					<table width="99%" border="0" cellpadding="0" cellspacing="0"
@@ -450,19 +450,19 @@ html {
 										<tr>
 
 											<td width="16%" align="right" nowrap="nowrap">报废数量:</td>
-											<td width="34%"><input class="text" id="SCOUNT"
-												name='SCOUNT' style="width:154px" value="" /></td>
+											<td width="34%"><input class="text" id="scount"
+												name='scount' style="width:154px" value="" /></td>
 										</tr>
 
 										<tr>
 
 											<td nowrap="nowrap" align="right">报废时间:</td>
-											<td><input class="text" id="STIME" name='STIME'
+											<td><input class="text" id="stime" name='stime'
 												style="width:154px" value="" /></td>
 										</tr>
 										<tr>
 											<td align="right">产品编号:</td>
-											<td><select name="BID" style="width:154px">
+											<td><select name="bid" style="width:154px">
 													<%
 														List<Balance> list1 = (List<Balance>) request.getAttribute("balanceList");
 														Iterator<Balance> it1 = list1.iterator();
@@ -479,7 +479,7 @@ html {
 											</select></td>
 										<tr>
 											<td align="right">部门编号:</td>
-											<td><select name="DEPARTID" style="width:154px">
+											<td><select name="departid" style="width:154px">
 													<%
 														List<Department> list2 = (List<Department>) request.getAttribute("departmentList");
 														Iterator<Department> it2 = list2.iterator();
@@ -497,6 +497,7 @@ html {
 
 
 										</tr>
+										<tr><td><c:out value="${msg }" /></td></tr>
 									</table>
 									<br />
 								</fieldset>

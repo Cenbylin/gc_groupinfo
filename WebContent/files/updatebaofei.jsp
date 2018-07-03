@@ -401,19 +401,19 @@ document.getElementById("aa").style.display="";
 									 
 									  <tr>
 									  <td nowrap align="right" width="15%">报废单号:</td>
-									    <td width="35%"><input name='SID' type="text" class="text" style="width:154px" value="<%=ag.getSid() %>"  readonly="readonly" />
+									    <td width="35%"><input name='sid' type="text" class="text" style="width:154px" value="<%=ag.getSid() %>"  readonly="readonly" />
 								        <span class="red">*</span></td>
 									    <td nowrap align="right" width="15%">报废数量:</td>
-									    <td width="35%"><input name='SCOUNT' type="text" class="text" style="width:154px" value="<%=ag.getScount() %>" />
+									    <td width="35%"><input name='scount' type="text" class="text" style="width:154px" value="<%=ag.getScount() %>" />
 									  </tr>
 									   <tr>
 									  <td nowrap align="right" width="15%">报废时间:</td>
-									    <td width="35%"><input name='STIME' type="text" class="text" style="width:154px" value="<%=format.format(ag.getStime()) %>" />
+									    <td width="35%"><input name='stime' type="text" class="text" style="width:154px" value="<%=format.format(ag.getStime()) %>" />
 								      
 									    <td nowrap align="right" width="15%">资产编号:</td>
 									    <td width="35%">
 									    
-									    <select name="BID" style="width:154px">
+									    <select name="bid" style="width:154px">
 									    		<%
 										    		List<Balance> list=(List<Balance>)request.getAttribute("balanceList");
 									              	Iterator<Balance> it=list.iterator();
@@ -434,7 +434,7 @@ document.getElementById("aa").style.display="";
 									   <tr>
 									  <td nowrap align="right" width="15%">部门编号:</td>
 									    <td width="35%">
-								       		<select name="DEPARTID" style="width:154px">
+								       		<select name="departid" style="width:154px">
 									    		<%
 										    		List<Department> list1=(List<Department>)request.getAttribute("departmentList");
 									              	Iterator<Department> it1=list1.iterator();
@@ -455,7 +455,7 @@ document.getElementById("aa").style.display="";
 									    	
 									    	
 									  </tr>
-									
+									<tr><td><c:out value=${msg } /></td></tr>
 									  </table>
 							  <br />
 								</fieldset>			</TD>
