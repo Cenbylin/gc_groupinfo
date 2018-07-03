@@ -66,7 +66,7 @@ public class ScrapServiceImpl implements ScrapService{
 		if(scrap.getScount() <= 0) {
 			throw new Exception("报废数量应为正数");
 		}
-		mapper.insertSelective(scrap);
+		mapper.updateByPrimaryKeySelective(scrap);
 		
 	}
 

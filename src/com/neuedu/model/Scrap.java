@@ -30,8 +30,10 @@ public class Scrap {
         this.scount = scount;
     }
 
-    public Date getStime() {
-    	return this.stime;
+    public String getStime() {
+    	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    	
+    	return format.format(this.stime);
     }
 
     public void setStime(Date stime) {

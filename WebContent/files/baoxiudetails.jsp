@@ -383,12 +383,11 @@ function link(){
 				  <tr>
 				    <td height="40" class="font42"><table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="newfont03">
 				  <tr>
-				    <td height="20" colspan="2" align="center" bgcolor="#EEEEEE"class="tablestyle_title"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 采购单详细内容</td>
+				    <td height="20" colspan="2" align="center" bgcolor="#EEEEEE"class="tablestyle_title"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 报修详细内容</td>
 				  </tr>
 				  
 				  <%
 									 	Repair ag=(Repair)request.getAttribute("query");
-										 SimpleDateFormat format0 = new SimpleDateFormat("yyyy-MM-dd");
 										 
 									 %>
 				  
@@ -402,7 +401,7 @@ function link(){
 				  </tr>
 				  <tr>
 				    <td width="16%" height="20" align="right" bgcolor="#FFFFFF">报修时间:</td>
-				    <td width="84%" colspan="2" bgcolor="#FFFFFF"><%=format0.format(ag.getRtime()) %></td>
+				    <td width="84%" colspan="2" bgcolor="#FFFFFF"><%=ag.getRtime() %></td>
 				  </tr>
 				   <tr>
 				    <td width="16%" height="20" align="right" bgcolor="#FFFFFF">资产编号:</td>

@@ -117,6 +117,20 @@ function del() {
 	document.location.href="${pageContext.request.contextPath}/category/delete.do?cid="+paramUrl; */
 
 }
+function check() {
+	var obj = document.fom.elements;
+	var chazhao = "";
+	for (var i = 0; i < obj.length; i++) {
+		if (obj[i].name == "shuru") {
+			chazhao += obj[i].value
+
+		}
+	}
+	
+	var params = encodeURI(encodeURI(chazhao));
+	document.getElementById("fom").action = "${pageContext.request.contextPath}/scrap/findByIdmh.do?id="
+			+ params;
+}
 </SCRIPT>
 <body data-type="index">
 
@@ -403,10 +417,10 @@ function del() {
 						    <tr>
 							  <td width="24"><img src="../images/ico07.gif" width="20" height="18" /></td>
 							  <td width="519"><label>报废编号:
-							      <input name="text" type="text" nam="gongs" />
+							      <input name="shuru" type="text" nam="gongs" />
 							  </label>
 							   
-							    <input name="Submit" type="button" class="right-button02" value="查询" /></td>
+							    <input name="Submit" type="submit" class="right-button02" value="查询" onclick="check();"/></td>
 							   <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>	
 						    </tr>
 				          </table></td>
@@ -418,8 +432,8 @@ function del() {
 				          <td><table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 				          	 <tr>
 				               <td height="20"><span class="newfont07">选择：<a href="#" class="right-font08" onclick="selectAll();">全选</a>-<a href="#" class="right-font08" onclick="unselectAll();">反选</a></span>
-						           <input name="Submit" type="button" class="right-button08" value="删除所选报修信息" onclick="del();"/> 
-				               <input name="Submit" type="button" class="right-button08" value="添加报修信息" onclick="link();" />
+						           <input name="Submit" type="button" class="right-button08" value="删除所选报废信息" onclick="del();"/> 
+				               <input name="Submit" type="button" class="right-button08" value="添加报废信息" onclick="link();" />
 						           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 					              </td>
 				          </tr>
@@ -445,22 +459,23 @@ function del() {
 				           
 				           <tr>
 				
-				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid"/></td>
+				                    <td bgcolor="#FFFFFF"><input type="checkbox" name="delid" value="${c.sid }"/></td>
 				                    <td bgcolor="#FFFFFF">${c.sid }</td>
 				                    <td bgcolor="#FFFFFF">${c.scount }</td>
 				                    <td bgcolor="#FFFFFF">${c.stime }</td>
 				                    <td bgcolor="#FFFFFF">${c.bid }</td>
 				                    <td bgcolor="#FFFFFF">${c.departid }</td>
-				                    <td bgcolor="#FFFFFF"><a href="${pageContext.request.contextPath}/scrap/forupdate.do?id=${c.repairid }">编辑</a>&nbsp;|&nbsp;<a href="baofeidetails.html">查看</a></td>
+				                    <td bgcolor="#FFFFFF"><a href="${pageContext.request.contextPath}/scrap/forupdate.do?id=${c.sid }">编辑</a>&nbsp;|&nbsp;<a href="${pageContext.request.contextPath}/scrap/forupdate.do?id=${c.sid }">查看</a></td>
 				           </tr> 
 				           </c:forEach>
 				           
 				            </table></td>
 				        </tr>
 				      </table>
-				
+							
 				            </table></td>
 				        </tr>
+				        <tr><td><c:out value="${msg }" /></td></tr>
 				      </table>
 				
 				      

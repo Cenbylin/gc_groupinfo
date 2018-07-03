@@ -85,7 +85,7 @@ public class ScrapController {
 			request.setAttribute("query", scrapService.findScrapById(id));
 			request.setAttribute("balanceList", balanceService.selectAll());
 			request.setAttribute("departmentList", departmentService.findAllDepartment());
-			return "updatebaoxiu";
+			return "updatebaofei";
 		}catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -104,11 +104,12 @@ public class ScrapController {
 			return "baofeixinxi";
 		} catch (Exception e) {
 			// TODO: handle exception
+			System.out.println("榆次出错");
 			e.printStackTrace();
 			request.setAttribute("msg", e.getMessage());
 			request.setAttribute("balanceList", balanceService.selectAll());
 			request.setAttribute("departmentList", departmentService.findAllDepartment());
-			return "updatebaoxiu";
+			return "updatebaofei";
 		}
 	}
 	
@@ -144,13 +145,14 @@ public class ScrapController {
 	@RequestMapping("findByIdmh")
 	public String findScrapmh(HttpServletRequest request,String id) {
 		try {
-			 request.setAttribute("", scrapService.findScrapById(id));
-			 return "";
+			 request.setAttribute("query", scrapService.findScrapById(id));
+			 return "baofeidetails";
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 			request.setAttribute("msg", e.getMessage());
-			return "";
+			request.setAttribute("listBuy4", scrapService.selectAll());
+			return "baofeixinxi";
 		}
 	}
 

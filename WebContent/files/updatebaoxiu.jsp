@@ -395,7 +395,6 @@ document.getElementById("aa").style.display="";
 									 
 									 <%
 									 	Repair ag=(Repair)request.getAttribute("query");
-										SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 										 
 									 %>
 									 
@@ -408,7 +407,7 @@ document.getElementById("aa").style.display="";
 									  </tr>
 									   <tr>
 									  <td nowrap align="right" width="15%">报修时间:</td>
-									    <td width="35%"><input name='rtime' type="text" class="text" style="width:154px" value="<%=format.format(ag.getRtime()) %>" />
+									    <td width="35%"><input name='rtime' type="text" class="text" style="width:154px" value="<%=ag.getRtime() %>" />
 								      
 									    <td nowrap align="right" width="15%">资产编号:</td>
 									    <td width="35%">
