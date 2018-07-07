@@ -194,9 +194,9 @@ document.getElementById("aa").style.display="";
                             <span>基础数据管理</span>
 			    <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
                         </a>
-			<ul class="tpl-left-nav-sub-menu" style="display:block">
+			<ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/category/findAll.do" class="active">
+                                <a href="${pageContext.request.contextPath}/category/findAll.do">
                                     <i class="am-icon-angle-right"></i>
                                     <span>资产分类设置</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
@@ -205,11 +205,11 @@ document.getElementById("aa").style.display="";
                                     <i class="am-icon-angle-right"></i>
                                     <span>部门设置</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
-                                <a href="../files/addzc.jsp">
+                                <a href="${pageContext.request.contextPath}/files/addzc.jsp">
                                      <i class="am-icon-angle-right"></i>
                                         <span>资产录入</span>
                                      <i class="tpl-left-nav-content tpl-badge-primary"></i>
-                                <a href="../area/list.do">
+                                <a href="${pageContext.request.contextPath}/area/list.do">
                                      <i class="am-icon-angle-right"></i>
                                      <span>区域管理</span>
                                 </a>
@@ -229,19 +229,19 @@ document.getElementById("aa").style.display="";
                                     <span>采购管理</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll.do">
+                                <a href="${pageContext.request.contextPath}/check/findAll.do">
                                     <i class="am-icon-angle-right"></i>
                                     <span>盘点管理</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
-                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll2.do">
+                                <a href="${pageContext.request.contextPath}/translate/findAll.do">
                                      <i class="am-icon-angle-right"></i>
                                         <span>跨部门调配管理</span>
                                      <i class="tpl-left-nav-content tpl-badge-primary"></i>
-                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll3.do">
+                                <a href="${pageContext.request.contextPath}/Repair/findAll2.do">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报修管理</span>
                                 </a>
-								<a href="${pageContext.request.contextPath}/buyProuduct/findAll4.do">
+								<a href="${pageContext.request.contextPath}/scrap/findAll2.do">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报废管理</span>
                                 </a>
@@ -257,24 +257,24 @@ document.getElementById("aa").style.display="";
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/balance/findAll.do">
+                                <a href="${pageContext.request.contextPath}/Balance/findAll.do">
                                     <i class="am-icon-angle-right"></i>
                                     <span>资产总数</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/cgjl/findAll.do">
+                                <a href="${pageContext.request.contextPath}/buy/findAll2.do">
                                     <i class="am-icon-angle-right"></i>
                                     <span>采购记录</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
-                                <a href="${pageContext.request.contextPath}/tpjl/findAll.do">
+                                <a href="${pageContext.request.contextPath}/translate/findAll2.do">
                                      <i class="am-icon-angle-right"></i>
                                         <span>跨部门调配记录</span>
                                      <i class="tpl-left-nav-content tpl-badge-primary"></i>
-                                <a href="${pageContext.request.contextPath}/bxjl/findAll.do">
+                                <a href="${pageContext.request.contextPath}/Repair/findAll.do">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报修记录</span>
                                 </a>
-								<a href="${pageContext.request.contextPath}/bfjl/findAll.do">
+								<a href="${pageContext.request.contextPath}/scrap/findAll.do">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报废记录</span>
                                 </a>
@@ -313,9 +313,6 @@ document.getElementById("aa").style.display="";
                 </ul>
             </div>
         </div>
-
-
-
 
 <%--内容 --%>
         <div class="tpl-content-wrapper">

@@ -20,6 +20,7 @@ import com.neuedu.service.DepartmentService;
 import com.neuedu.service.RepairService;
 
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("Repair")
@@ -41,9 +42,10 @@ public class RepairController {
 	//用于统计
 	@RequestMapping("findAll")
 	public String findAll(HttpServletRequest request) {
-		request.setAttribute("listBxjl", repairService.selectAll());
+		List<Repair> list = repairService.selectAll();
+		request.setAttribute("listBxjl", list);
 		return "baoxiujilu";		
-	}
+	} 
 	
 	@RequestMapping("findBybxbh")
 	public String findBybxbh(HttpServletRequest request, String zha) {

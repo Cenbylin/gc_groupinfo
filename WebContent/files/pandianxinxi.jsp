@@ -97,6 +97,21 @@ function queryBaoxiu() {
 			+ params;
 	document.getElementById("fom").submit(); 
 }
+function queryBaofei() {
+	var obj = document.fom.elements;
+	var chazhao = "";
+	for (var i = 0; i < obj.length; i++) {
+		if (obj[i].name == "baofei") {
+			chazhao += obj[i].value
+
+		}
+	}
+	
+	var params = encodeURI(encodeURI(chazhao));
+	document.getElementById("fom").action = "${pageContext.request.contextPath}/scrap/findByIdmh.do?id="
+			+ params;
+	document.getElementById("fom").submit(); 
+}
 </script>
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
 </head>
@@ -274,7 +289,6 @@ $(function(){
 
     <div class="tpl-page-container tpl-page-header-fixed">
 
-
         <div class="tpl-left-nav tpl-left-nav-hover">
             <div class="tpl-left-nav-title">
                 Amaze UI 列表
@@ -298,11 +312,11 @@ $(function(){
                                     <i class="am-icon-angle-right"></i>
                                     <span>部门设置</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
-                                <a href="../files/addzc.jsp">
+                                <a href="${pageContext.request.contextPath}/files/addzc.jsp">
                                      <i class="am-icon-angle-right"></i>
                                         <span>资产录入</span>
                                      <i class="tpl-left-nav-content tpl-badge-primary"></i>
-                                <a href="../area/list.do">
+                                <a href="${pageContext.request.contextPath}/area/list.do">
                                      <i class="am-icon-angle-right"></i>
                                      <span>区域管理</span>
                                 </a>
@@ -315,26 +329,26 @@ $(function(){
                             <span>资产管理</span>
                             <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
                         </a>
-    			<ul class="tpl-left-nav-sub-menu" style="display:block">
+    			<ul class="tpl-left-nav-sub-menu">
                             <li>
                                 <a href="${pageContext.request.contextPath}/buy/findAll.do">
                                     <i class="am-icon-angle-right"></i>
                                     <span>采购管理</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll.do" class="active">
+                                <a href="${pageContext.request.contextPath}/check/findAll.do">
                                     <i class="am-icon-angle-right"></i>
                                     <span>盘点管理</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
-                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll2.do">
+                                <a href="${pageContext.request.contextPath}/translate/findAll.do">
                                      <i class="am-icon-angle-right"></i>
                                         <span>跨部门调配管理</span>
                                      <i class="tpl-left-nav-content tpl-badge-primary"></i>
-                                <a href="${pageContext.request.contextPath}/buyProuduct/findAll3.do">
+                                <a href="${pageContext.request.contextPath}/Repair/findAll2.do">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报修管理</span>
                                 </a>
-								<a href="${pageContext.request.contextPath}/buyProuduct/findAll4.do">
+								<a href="${pageContext.request.contextPath}/scrap/findAll2.do">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报废管理</span>
                                 </a>
@@ -350,24 +364,24 @@ $(function(){
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="${pageContext.request.contextPath}/balance/findAll.do">
+                                <a href="${pageContext.request.contextPath}/Balance/findAll.do">
                                     <i class="am-icon-angle-right"></i>
                                     <span>资产总数</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="${pageContext.request.contextPath}/cgjl/findAll.do">
+                                <a href="${pageContext.request.contextPath}/buy/findAll2.do">
                                     <i class="am-icon-angle-right"></i>
                                     <span>采购记录</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
-                                <a href="${pageContext.request.contextPath}/tpjl/findAll.do">
+                                <a href="${pageContext.request.contextPath}/translate/findAll2.do">
                                      <i class="am-icon-angle-right"></i>
                                         <span>跨部门调配记录</span>
                                      <i class="tpl-left-nav-content tpl-badge-primary"></i>
-                                <a href="${pageContext.request.contextPath}/bxjl/findAll.do">
+                                <a href="${pageContext.request.contextPath}/Repair/findAll.do">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报修记录</span>
                                 </a>
-				<a href="${pageContext.request.contextPath}/bfjl/findAll.do">
+								<a href="${pageContext.request.contextPath}/scrap/findAll.do">
                                      <i class="am-icon-angle-right"></i>
                                      <span>报废记录</span>
                                 </a>
@@ -383,12 +397,12 @@ $(function(){
                         </a>
                         <ul class="tpl-left-nav-sub-menu">
                             <li>
-                                <a href="table-font-list.html">
+                                <a href="${pageContext.request.contextPath}/provider/findAll.do">
                                     <i class="am-icon-angle-right"></i>
                                     <span>供应商信息查看</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
                                 </a>
-                                <a href="table-images-list.html">
+                                <a href="${pageContext.request.contextPath}/product/findAll.do">
                                     <i class="am-icon-angle-right"></i>
                                     <span>产品信息查看</span>
                                     <i class="tpl-left-nav-content tpl-badge-success"></i>
@@ -406,8 +420,6 @@ $(function(){
                 </ul>
             </div>
         </div>
-
-
 
 
 <%--内容 --%>
@@ -698,7 +710,7 @@ $(function(){
 				            <input name="baofei" type="text" nam="gongs" />
 				        </label>
 				         
-				          <input name="Submit" type="button" class="right-button02" value="盘点" /></td>
+				          <input name="Submit" type="button" class="right-button02" value="盘点" onclick="queryBaofei();"/></td>
 				         <td width="679" align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>  
 				        </tr>
 				          </table></td>
@@ -738,7 +750,8 @@ $(function(){
 				                    <td bgcolor="#FFFFFF">${c.scount}</td>
 				                    <td bgcolor="#FFFFFF">${c.stime}</td>
 				                    <td bgcolor="#FFFFFF">${c.bid}</td>
-				                    <td bgcolor="#FFFFFF"><a href="updatecaigou.htm">编辑</a>&nbsp;|&nbsp;<a href="caigoudetails.html">查看</a></td>
+				                    <td bgcolor="#FFFFFF"><a href="${pageContext.request.contextPath}/scrap/forupdate.do?id=${c.sid }">编辑</a>&nbsp;|&nbsp;
+				                    <a href="${pageContext.request.contextPath}/scrap/forupdate.do?id=${c.sid }">查看</a></td>
 				           </tr> 
 				           
 				           </c:forEach>
