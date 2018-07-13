@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.BuyMapper">
+  <resultMap id="BaseResultMap" type="com.neuedu.model.Buy">
+    <id column="BUYID" jdbcType="INTEGER" property="buyid" />
+    <result column="BUYCOUNT" jdbcType="DOUBLE" property="buycount" />
+    <result column="BUYTIME" jdbcType="TIMESTAMP" property="buytime" />
+    <result column="PROVID" jdbcType="INTEGER" property="provid" />
+    <result column="DEPARTID" jdbcType="INTEGER" property="departid" />
+    <result column="PRODID" jdbcType="INTEGER" property="prodid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    BUYID, BUYCOUNT, BUYTIME, PROVID, DEPARTID, PRODID
+  </sql>
+  <select id="selectByExample" parameterType="com.neuedu.model.BuyExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from buy
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from buy
+    where BUYID = #{buyid,jdbcType=INTEGER}
+  </select>
+  <!-- 自己加的 -->
+  <select id="selectAll" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select b.BUYID, b.BUYCOUNT, b.BUYTIME, b.PROVID, b.DEPARTID, p.PRODID from buy as b, product as p where b.PROVID = p.PROVID
+  </select>
+  
+  <select id="findBycgdh" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select b.BUYID, b.BUYCOUNT, b.BUYTIME, b.PROVID, b.DEPARTID, p.PRODID from buy as b, product as p where b.PROVID = p.PROVID and b.BUYID=#{buyid,jdbcType=INTEGER}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from buy
+    where BUYID = #{buyid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.neuedu.model.BuyExample">
+    delete from buy
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.neuedu.model.Buy">
+    insert into buy (BUYID, BUYCOUNT, BUYTIME, 
+      PROVID, DEPARTID, PRODID
+      )
+    values (#{buyid,jdbcType=INTEGER}, #{buycount,jdbcType=DOUBLE}, #{buytime,jdbcType=TIMESTAMP}, 
+      #{provid,jdbcType=INTEGER}, #{departid,jdbcType=INTEGER}, #{prodid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.neuedu.model.Buy">
+    insert into buy
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="buyid != null">
+        BUYID,
+      </if>
+      <if test="buycount != null">
+        BUYCOUNT,
+      </if>
+      <if test="buytime != null">
+        BUYTIME,
+      </if>
+      <if test="provid != null">
+        PROVID,
+      </if>
+      <if test="departid != null">
+        DEPARTID,
+      </if>
+      <if test="prodid != null">
+        PRODID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="buyid != null">
+        #{buyid,jdbcType=INTEGER},
+      </if>
+      <if test="buycount != null">
+        #{buycount,jdbcType=DOUBLE},
+      </if>
+      <if test="buytime != null">
+        #{buytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="provid != null">
+        #{provid,jdbcType=INTEGER},
+      </if>
+      <if test="departid != null">
+        #{departid,jdbcType=INTEGER},
+      </if>
+      <if test="prodid != null">
+        #{prodid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.neuedu.model.BuyExample" resultType="java.lang.Long">
+    select count(*) from buy
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update buy
+    <set>
+      <if test="record.buyid != null">
+        BUYID = #{record.buyid,jdbcType=INTEGER},
+      </if>
+      <if test="record.buycount != null">
+        BUYCOUNT = #{record.buycount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.buytime != null">
+        BUYTIME = #{record.buytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.provid != null">
+        PROVID = #{record.provid,jdbcType=INTEGER},
+      </if>
+      <if test="record.departid != null">
+        DEPARTID = #{record.departid,jdbcType=INTEGER},
+      </if>
+      <if test="record.prodid != null">
+        PRODID = #{record.prodid,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update buy
+    set BUYID = #{record.buyid,jdbcType=INTEGER},
+      BUYCOUNT = #{record.buycount,jdbcType=DOUBLE},
+      BUYTIME = #{record.buytime,jdbcType=TIMESTAMP},
+      PROVID = #{record.provid,jdbcType=INTEGER},
+      DEPARTID = #{record.departid,jdbcType=INTEGER},
+      PRODID = #{record.prodid,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.model.Buy">
+    update buy
+    <set>
+      <if test="buycount != null">
+        BUYCOUNT = #{buycount,jdbcType=DOUBLE},
+      </if>
+      <if test="buytime != null">
+        BUYTIME = #{buytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="provid != null">
+        PROVID = #{provid,jdbcType=INTEGER},
+      </if>
+      <if test="departid != null">
+        DEPARTID = #{departid,jdbcType=INTEGER},
+      </if>
+      <if test="prodid != null">
+        PRODID = #{prodid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where BUYID = #{buyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.neuedu.model.Buy">
+    update buy
+    set BUYCOUNT = #{buycount,jdbcType=DOUBLE},
+      BUYTIME = #{buytime,jdbcType=TIMESTAMP},
+      PROVID = #{provid,jdbcType=INTEGER},
+      DEPARTID = #{departid,jdbcType=INTEGER},
+      PRODID = #{prodid,jdbcType=INTEGER}
+    where BUYID = #{buyid,jdbcType=INTEGER}
+  </update>
+</mapper>

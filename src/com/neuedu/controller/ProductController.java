@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.github.pagehelper.PageInfo;
 import com.neuedu.model.Product;
 import com.neuedu.service.ProductService;
 
@@ -21,7 +22,9 @@ public class ProductController {
 	@RequestMapping("findAll")
 	public String findAllProduct(HttpServletRequest request){
 		List<Product> product=productService.selectAll();
+//		PageInfo<Product> product = productService.selectAllWithPage(3, 1);
 		request.setAttribute("listProduct", product);
+//		request.setAttribute("listProduct", product);
 		return "productxinxi";		
 	}
 	

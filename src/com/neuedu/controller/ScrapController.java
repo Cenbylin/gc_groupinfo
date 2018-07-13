@@ -19,6 +19,8 @@ import com.neuedu.service.BalanceService;
 import com.neuedu.service.DepartmentService;
 import com.neuedu.service.ScrapService;
 
+import javafx.print.PageRange;
+
 @Controller
 @RequestMapping("scrap")
 public class ScrapController {
@@ -41,6 +43,7 @@ public class ScrapController {
 	@RequestMapping("findAll")
 	public String findAll(HttpServletRequest request) {
 		request.setAttribute("listBfjl", scrapService.selectAll());
+		 
 		return "baofeijilu";		
 	}
 	
@@ -52,7 +55,8 @@ public class ScrapController {
 	
 	@RequestMapping("findAll2")
 	public String findAllScrap(HttpServletRequest request) {
-		request.setAttribute("listBuy4", scrapService.selectAll());
+//		request.setAttribute("listBuy4", scrapService.selectAll());
+		request.setAttribute("listBuy4", scrapService.selectAllWithPage(2, 1));
 		return "baofeixinxi";
 	}
 	

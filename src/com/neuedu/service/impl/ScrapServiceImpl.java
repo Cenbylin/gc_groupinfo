@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.neuedu.mapper.ScrapMapper;
 import com.neuedu.model.Scrap;
 import com.neuedu.service.ScrapService;
@@ -108,6 +110,16 @@ public class ScrapServiceImpl implements ScrapService{
 		// TODO Auto-generated method stub
 		return mapper.selectByPrimaryKey(id);
 		
+	}
+
+	@Override
+	public PageInfo<Scrap> selectAllWithPage(int currentPage, int pageSize) {
+		// TODO Auto-generated method stub
+		PageHelper.startPage(currentPage, pageSize);
+		List<Scrap> scraps = mapper.selectAll();
+		PageInfo<Scrap> sInfo = new PageInfo<>(scraps);
+		System.out.println("在这里"+sInfo.getPages());
+		return sInfo;
 	}
 	
 	

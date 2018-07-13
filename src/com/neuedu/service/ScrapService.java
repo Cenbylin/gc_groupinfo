@@ -2,6 +2,7 @@ package com.neuedu.service;
 
 import java.util.List;
 
+import com.github.pagehelper.PageInfo;
 import com.neuedu.model.Scrap;
 public interface ScrapService {
 	List<Scrap> selectAll();
@@ -11,5 +12,6 @@ public interface ScrapService {
 	void dedleteScrap(String id) throws Exception;
 	Scrap findScrapById(String id) throws Exception;
 	Scrap findScrapById(int id) throws Exception;
+	PageInfo<Scrap> selectAllWithPage(int currentPage,int pageSize);
 
 }

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.mapper.TranslateMapper">
+  <resultMap id="BaseResultMap" type="com.neuedu.model.Translate">
+    <id column="TID" jdbcType="INTEGER" property="tid" />
+    <result column="TCOUNT" jdbcType="DOUBLE" property="tcount" />
+    <result column="TRTIME" jdbcType="TIMESTAMP" property="trtime" />
+    <result column="BID" jdbcType="INTEGER" property="bid" />
+    <result column="DEPARTID" jdbcType="INTEGER" property="departid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    TID, TCOUNT, TRTIME, BID, DEPARTID
+  </sql>
+  <select id="selectByExample" parameterType="com.neuedu.model.TranslateExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from translate
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from translate
+    where TID = #{tid,jdbcType=INTEGER}
+  </select>
+  <!-- 自己加的 -->
+  <select id="selectAll" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select TID, TCOUNT, TRTIME, BID, DEPARTID from translate
+  </select>
+  
+  <select id="findBytpbh" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select TID, TCOUNT, TRTIME, BID, DEPARTID from translate where TID=#{tid,jdbcType=INTEGER}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from translate
+    where TID = #{tid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.neuedu.model.TranslateExample">
+    delete from translate
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.neuedu.model.Translate">
+    insert into translate (TID, TCOUNT, TRTIME, 
+      BID, DEPARTID)
+    values (#{tid,jdbcType=INTEGER}, #{tcount,jdbcType=DOUBLE}, #{trtime,jdbcType=TIMESTAMP}, 
+      #{bid,jdbcType=INTEGER}, #{departid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.neuedu.model.Translate">
+    insert into translate
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        TID,
+      </if>
+      <if test="tcount != null">
+        TCOUNT,
+      </if>
+      <if test="trtime != null">
+        TRTIME,
+      </if>
+      <if test="bid != null">
+        BID,
+      </if>
+      <if test="departid != null">
+        DEPARTID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tid != null">
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="tcount != null">
+        #{tcount,jdbcType=DOUBLE},
+      </if>
+      <if test="trtime != null">
+        #{trtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bid != null">
+        #{bid,jdbcType=INTEGER},
+      </if>
+      <if test="departid != null">
+        #{departid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.neuedu.model.TranslateExample" resultType="java.lang.Long">
+    select count(*) from translate
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update translate
+    <set>
+      <if test="record.tid != null">
+        TID = #{record.tid,jdbcType=INTEGER},
+      </if>
+      <if test="record.tcount != null">
+        TCOUNT = #{record.tcount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.trtime != null">
+        TRTIME = #{record.trtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.bid != null">
+        BID = #{record.bid,jdbcType=INTEGER},
+      </if>
+      <if test="record.departid != null">
+        DEPARTID = #{record.departid,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update translate
+    set TID = #{record.tid,jdbcType=INTEGER},
+      TCOUNT = #{record.tcount,jdbcType=DOUBLE},
+      TRTIME = #{record.trtime,jdbcType=TIMESTAMP},
+      BID = #{record.bid,jdbcType=INTEGER},
+      DEPARTID = #{record.departid,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neuedu.model.Translate">
+    update translate
+    <set>
+      <if test="tcount != null">
+        TCOUNT = #{tcount,jdbcType=DOUBLE},
+      </if>
+      <if test="trtime != null">
+        TRTIME = #{trtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bid != null">
+        BID = #{bid,jdbcType=INTEGER},
+      </if>
+      <if test="departid != null">
+        DEPARTID = #{departid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where TID = #{tid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.neuedu.model.Translate">
+    update translate
+    set TCOUNT = #{tcount,jdbcType=DOUBLE},
+      TRTIME = #{trtime,jdbcType=TIMESTAMP},
+      BID = #{bid,jdbcType=INTEGER},
+      DEPARTID = #{departid,jdbcType=INTEGER}
+    where TID = #{tid,jdbcType=INTEGER}
+  </update>
+</mapper>

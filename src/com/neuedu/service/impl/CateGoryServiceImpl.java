@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.apache.catalina.mapper.Mapper;
 import org.springframework.stereotype.Service;
 
 import com.neuedu.mapper.CategoryMapper;

@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.neuedu.mapper.ProductMapper;
 import com.neuedu.model.Product;
 import com.neuedu.model.ProductExample;
@@ -38,5 +40,14 @@ public class ProductServiceImpl implements ProductService{
 	public int update( double Buycount, double Prodcount, Integer prodid, Integer buyid ) {
 		// TODO Auto-generated method stub
 		return mapper.update(  Buycount, Prodcount, prodid, buyid );
+	}
+
+	@Override
+	public PageInfo<Product> selectAllWithPage(int currentPage,int pageSize) {
+		// TODO Auto-generated method stub
+		PageHelper.startPage(currentPage,pageSize);
+		List<Product> list = mapper.selectAll();
+		PageInfo<Product> pageInfo = new PageInfo<>(list);
+		return pageInfo;
 	}
 }
